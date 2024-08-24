@@ -1,6 +1,15 @@
 # CHATGPT_AI_CLASS
 
+### 텍스트 기본 이해 및 실습
 
+
+### ChatGPT API 기본 및 실습
+
+
+### Hugging Face 기본 및 실습
+
+
+### LangChain 기본 및 실습
 
 
 ### LICENSE
