@@ -22,7 +22,7 @@
 
 ### PART_02 LLM 시작하기
  * LLM 시작하기
-   * LLM 시작하기 [PDF](https://ldjwj.github.io/CHATGPT_AI_CLASS/LLM시작하기_V10_wC.pdf)
+   * LLM 시작하기 [PDF](https://ldjwj.github.io/CHATGPT_AI_CLASS/LLM시작하기_V10_wc_PDF.pdf)
 
  * CHATGPT 
    * CHATGPT API 시작하기 [PDF 01](), [HTML 01]()
