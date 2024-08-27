@@ -25,26 +25,11 @@
  * CHATGPT 
    * CHATGPT API 시작하기 [PDF 01](), [HTML 01]()
    * CHATGPT GPT-2 실습 및 이해 [PDF](https://ldjwj.github.io/CHATGPT_AI_CLASS/03_GPT3_Pratice_v10_Colab.pdf) [HTML](https://ldjwj.github.io/CHATGPT_AI_CLASS/03_GPT2_Pratice_wc_v10.html)
-   
+   * CHATGPT API 연동하기 [PDF](https://ldjwj.github.io/CHATGPT_AI_CLASS/04_ChatGPTAPI_BASIC_V10.pdf) [HTML](https://ldjwj.github.io/CHATGPT_AI_CLASS/04_ChatGPTAPI_BASIC_V10.html)
 
 ### PART_03 실전 앱 구현해 보기
 
 ### PART_04 실전 데이터 분석 
- 
-### PART_05 딥러닝 기본 및 활용
- * 딥러닝 자연어 처리
-   * WordEmbedding(단어 임베딩) 기본 및 실습 
-      * [자료] - 텍스트 데이터 처리(1), 텍스트 데이터 처리(2)
-   * 딥러닝 사전 훈련 모델을 활용한 데이터 분석
-
- * RNN 기본 및 실전 데이터 실습
-   * RNN 기본 - 딥러닝 RNN => RNN 모델 실습(1), 모델 실습(2)[SimpleRNN]
-   * [영화] 영화 리뷰 데이터 IMDB RNN모델 구현해 보기
-     * [딥러닝 RNN] RNN 모델 실습(3) - 영화 리뷰 데이터 IMDB 실습 (SimpleRNN, LSTM)
-     
- * GAN 기본 및 딥러닝 응용
-   * 내용 : 이미지 생성 및 이미지 결합으로 그림의 화풍 적용
-   * [자료및 실습] [딥러닝 GAN] - [GAN - 적대적 생성 신경망], [GAN - NeuralStyleTransfer]
    
 ### 기타
  * Visual Studio Code 설치 [Window 환경]
