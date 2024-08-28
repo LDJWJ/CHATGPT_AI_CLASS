@@ -23,9 +23,15 @@
 
 
 ### PART_02 LLM 시작하기
+ * 전이학습 이해하기 [HTML](https://ldjwj.github.io/CHATGPT_AI_CLASS/03_전이학습_V10.html) [PDF](https://ldjwj.github.io/CHATGPT_AI_CLASS/03_전이학습_V10.pdf)
+ 
  * CHATGPT 
-   * CHATGPT GPT-2 실습 및 이해 [PDF](https://ldjwj.github.io/CHATGPT_AI_CLASS/03_GPT3_Pratice_v10_Colab.pdf) [HTML](https://ldjwj.github.io/CHATGPT_AI_CLASS/03_GPT2_Pratice_wc_v10.html)
-   * CHATGPT API 연동하기 [PDF](https://ldjwj.github.io/CHATGPT_AI_CLASS/04_ChatGPTAPI_BASIC_V10.pdf) [HTML](https://ldjwj.github.io/CHATGPT_AI_CLASS/04_ChatGPTAPI_BASIC_V10.html)
+   * CHATGPT API 시작하기 [HTML](https://ldjwj.github.io/CHATGPT_AI_CLASS/04_ChatGPTAPI_BASIC_V11.html), [PDF](https://ldjwj.github.io/CHATGPT_AI_CLASS/04_ChatGPTAPI_BASIC_V11.pdf), 
+   * CHATGPT GPT-2 실습 및 이해 [HTML](https://ldjwj.github.io/CHATGPT_AI_CLASS/03_GPT2_Pratice_wc_v10.html), [PDF](https://ldjwj.github.io/CHATGPT_AI_CLASS/03_GPT3_Pratice_v10_Colab.pdf) 
+   * CHATGPT API 연동하기 [HTML](https://ldjwj.github.io/CHATGPT_AI_CLASS/04_ChatGPTAPI_BASIC_V10.html), [PDF](https://ldjwj.github.io/CHATGPT_AI_CLASS/04_ChatGPTAPI_BASIC_V10.pdf) 
+ 
+ * Hugging Face
+   * Hugging Face을 활용한 감정 분석 실습 [HTML](https://ldjwj.github.io/CHATGPT_AI_CLASS/05_HuggingFace_Basic_V11.html) [PDF](https://ldjwj.github.io/CHATGPT_AI_CLASS/05_HuggingFace_Basic_V11.pdf)
 
 ### PART_03 실전 앱 구현해 보기
 
