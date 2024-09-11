@@ -33,6 +33,12 @@
  * Hugging Face
    * Hugging Face을 활용한 감정 분석 실습 [HTML](https://ldjwj.github.io/CHATGPT_AI_CLASS/05_HuggingFace_Basic_V11.html) [PDF](https://ldjwj.github.io/CHATGPT_AI_CLASS/05_HuggingFace_Basic_V11.pdf)
 
+
+ * LangChain
+    * LangChain_맥락 이어가기 (chatgpt api, langchain) [HTML](https://ldjwj.github.io/CHATGPT_AI_CLASS/06_LangChain_맥락이어가기_V10.html) [PDF] (https://ldjwj.github.io/CHATGPT_AI_CLASS/06_LangChain_맥락이어가기_V10.pdf)
+
+    * LangChain_외부데이터연결 [HTML](https://ldjwj.github.io/CHATGPT_AI_CLASS/07_LangChain_외부데이터연결_V10.html) [PDF] (https://ldjwj.github.io/CHATGPT_AI_CLASS/07_LangChain_외부데이터연결_V10.pdf)
+
 ### PART_03 실전 앱 구현해 보기
 
 ### PART_04 실전 데이터 분석 
