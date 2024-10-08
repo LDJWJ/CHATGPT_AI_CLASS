@@ -40,6 +40,8 @@
     * LangChain_간단한챗봇 [HTML](https://ldjwj.github.io/CHATGPT_AI_CLASS/LangChain/03_LangChain_SimpleChat_V10.html)  [PDF](https://ldjwj.github.io/CHATGPT_AI_CLASS/LangChain/03_LangChain_SimpleChat_V10.pdf)
 	* LangChain_텍스트감성분류체인 [HTML](https://ldjwj.github.io/CHATGPT_AI_CLASS/LangChain/04_LangChain_TextClassfication_V10.html)  [PDF](https://ldjwj.github.io/CHATGPT_AI_CLASS/LangChain/04_LangChain_TextClassfication_V10.pdf)
 	* LangChain_PDF_RAG [HTML](https://ldjwj.github.io/CHATGPT_AI_CLASS/LangChain/05_LangChain_PDF_RAG_V10.html)  [PDF](https://ldjwj.github.io/CHATGPT_AI_CLASS/LangChain/05_LangChain_PDF_RAG_V10.pdf)
+	* LangChain_PDF_RAG 개선 [HTML](https://ldjwj.github.io/CHATGPT_AI_CLASS/LangChain/06_LangChain_PDF_RAG2_V10.html)  [PDF](https://ldjwj.github.io/CHATGPT_AI_CLASS/LangChain/05_LangChain_PDF_RAG_V10.pdf)
+
 
 ### PART_03 실전 앱 구현해 보기
 
