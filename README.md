@@ -42,6 +42,8 @@
 	* LangChain_PDF_RAG [HTML](https://ldjwj.github.io/CHATGPT_AI_CLASS/LangChain/05_LangChain_PDF_RAG_V10.html)  [PDF](https://ldjwj.github.io/CHATGPT_AI_CLASS/LangChain/05_LangChain_PDF_RAG_V10.pdf)
 	* LangChain_PDF_RAG 개선 [HTML](https://ldjwj.github.io/CHATGPT_AI_CLASS/LangChain/06_LangChain_PDF_RAG2_V10.html)  [PDF](https://ldjwj.github.io/CHATGPT_AI_CLASS/LangChain/05_LangChain_PDF_RAG_V10.pdf)
 
+ * 멀티 모달
+   * ollama를 활용한 Gemma2, 미스트랄, 멀티모달 활용 [HTML](https://ldjwj.github.io/CHATGPT_AI_CLASS/LangChain/07_ollama_start_V10_2410.html) [PDF](https://ldjwj.github.io/CHATGPT_AI_CLASS/LangChain/07_ollama_start_V10_2410.pdf)
 
 ### PART_03 실전 앱 구현해 보기
 
