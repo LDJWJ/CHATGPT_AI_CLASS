@@ -3,7 +3,7 @@
 <html lang="en">
 <head><meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>02_LangChain_외부데이터연결</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>04_LangChain_외부데이터연결_local_V10_2411</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <style type="text/css">
     pre { line-height: 125%; }
 td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
@@ -7500,15 +7500,61 @@ a.anchor-link {
 </div>
 </div>
 </div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC-%EC%84%A4%EC%B9%98">라이브러리 설치<a class="anchor-link" href="#%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC-%EC%84%A4%EC%B9%98">¶</a></h3><pre><code>pip install openai
+pip install langchain
+pip install langchain-openai
+pip install langchain_community
+pip install langchain-core
+pip install faiss-cpu
+pip install chardet
+</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="FAISS-%EC%84%A4%EC%B9%98">FAISS 설치<a class="anchor-link" href="#FAISS-%EC%84%A4%EC%B9%98">¶</a></h3><ul>
+<li>CPU 버전 설치</li>
+</ul>
+<pre><code>pip install faiss-cpu
+</code></pre>
+<ul>
+<li>GPU 버전 설치</li>
+</ul>
+<pre><code>pip install faiss-gpu
+</code></pre>
+</div>
+</div>
+</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>openai
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">langchain</span>
+<span class="kn">import</span> <span class="nn">langchain_community</span>
+<span class="kn">import</span> <span class="nn">faiss</span>
+<span class="kn">import</span> <span class="nn">openai</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"langchain 버전 : "</span><span class="p">,</span> <span class="n">langchain</span><span class="o">.</span><span class="n">__version__</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"langchain_community 버전 : "</span><span class="p">,</span> <span class="n">langchain_community</span><span class="o">.</span><span class="n">__version__</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"faiss-cpu 버전 : "</span><span class="p">,</span> <span class="n">faiss</span><span class="o">.</span><span class="n">__version__</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"openai 버전 : "</span><span class="p">,</span> <span class="n">openai</span><span class="o">.</span><span class="n">__version__</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -7521,182 +7567,10 @@ a.anchor-link {
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Collecting openai
-  Downloading openai-1.44.1-py3-none-any.whl.metadata (22 kB)
-Requirement already satisfied: anyio&lt;5,&gt;=3.5.0 in /usr/local/lib/python3.10/dist-packages (from openai) (3.7.1)
-Requirement already satisfied: distro&lt;2,&gt;=1.7.0 in /usr/lib/python3/dist-packages (from openai) (1.7.0)
-Collecting httpx&lt;1,&gt;=0.23.0 (from openai)
-  Downloading httpx-0.27.2-py3-none-any.whl.metadata (7.1 kB)
-Collecting jiter&lt;1,&gt;=0.4.0 (from openai)
-  Downloading jiter-0.5.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (3.6 kB)
-Requirement already satisfied: pydantic&lt;3,&gt;=1.9.0 in /usr/local/lib/python3.10/dist-packages (from openai) (2.8.2)
-Requirement already satisfied: sniffio in /usr/local/lib/python3.10/dist-packages (from openai) (1.3.1)
-Requirement already satisfied: tqdm&gt;4 in /usr/local/lib/python3.10/dist-packages (from openai) (4.66.5)
-Requirement already satisfied: typing-extensions&lt;5,&gt;=4.11 in /usr/local/lib/python3.10/dist-packages (from openai) (4.12.2)
-Requirement already satisfied: idna&gt;=2.8 in /usr/local/lib/python3.10/dist-packages (from anyio&lt;5,&gt;=3.5.0-&gt;openai) (3.8)
-Requirement already satisfied: exceptiongroup in /usr/local/lib/python3.10/dist-packages (from anyio&lt;5,&gt;=3.5.0-&gt;openai) (1.2.2)
-Requirement already satisfied: certifi in /usr/local/lib/python3.10/dist-packages (from httpx&lt;1,&gt;=0.23.0-&gt;openai) (2024.8.30)
-Collecting httpcore==1.* (from httpx&lt;1,&gt;=0.23.0-&gt;openai)
-  Downloading httpcore-1.0.5-py3-none-any.whl.metadata (20 kB)
-Collecting h11&lt;0.15,&gt;=0.13 (from httpcore==1.*-&gt;httpx&lt;1,&gt;=0.23.0-&gt;openai)
-  Downloading h11-0.14.0-py3-none-any.whl.metadata (8.2 kB)
-Requirement already satisfied: annotated-types&gt;=0.4.0 in /usr/local/lib/python3.10/dist-packages (from pydantic&lt;3,&gt;=1.9.0-&gt;openai) (0.7.0)
-Requirement already satisfied: pydantic-core==2.20.1 in /usr/local/lib/python3.10/dist-packages (from pydantic&lt;3,&gt;=1.9.0-&gt;openai) (2.20.1)
-Downloading openai-1.44.1-py3-none-any.whl (373 kB)
-   <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">373.5/373.5 kB</span> <span class="ansi-red-fg">18.2 MB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>
-Downloading httpx-0.27.2-py3-none-any.whl (76 kB)
-   <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">76.4/76.4 kB</span> <span class="ansi-red-fg">3.8 MB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>
-Downloading httpcore-1.0.5-py3-none-any.whl (77 kB)
-   <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">77.9/77.9 kB</span> <span class="ansi-red-fg">4.1 MB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>
-Downloading jiter-0.5.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (318 kB)
-   <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">318.9/318.9 kB</span> <span class="ansi-red-fg">13.3 MB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>
-Downloading h11-0.14.0-py3-none-any.whl (58 kB)
-   <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">58.3/58.3 kB</span> <span class="ansi-red-fg">3.2 MB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>
-Installing collected packages: jiter, h11, httpcore, httpx, openai
-Successfully installed h11-0.14.0 httpcore-1.0.5 httpx-0.27.2 jiter-0.5.0 openai-1.44.1
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>langchain_community
-<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>langchain
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Collecting langchain_community
-  Downloading langchain_community-0.2.16-py3-none-any.whl.metadata (2.7 kB)
-Requirement already satisfied: PyYAML&gt;=5.3 in /usr/local/lib/python3.10/dist-packages (from langchain_community) (6.0.2)
-Requirement already satisfied: SQLAlchemy&lt;3,&gt;=1.4 in /usr/local/lib/python3.10/dist-packages (from langchain_community) (2.0.32)
-Requirement already satisfied: aiohttp&lt;4.0.0,&gt;=3.8.3 in /usr/local/lib/python3.10/dist-packages (from langchain_community) (3.10.5)
-Collecting dataclasses-json&lt;0.7,&gt;=0.5.7 (from langchain_community)
-  Downloading dataclasses_json-0.6.7-py3-none-any.whl.metadata (25 kB)
-Collecting langchain&lt;0.3.0,&gt;=0.2.16 (from langchain_community)
-  Downloading langchain-0.2.16-py3-none-any.whl.metadata (7.1 kB)
-Collecting langchain-core&lt;0.3.0,&gt;=0.2.38 (from langchain_community)
-  Downloading langchain_core-0.2.39-py3-none-any.whl.metadata (6.2 kB)
-Collecting langsmith&lt;0.2.0,&gt;=0.1.0 (from langchain_community)
-  Downloading langsmith-0.1.117-py3-none-any.whl.metadata (13 kB)
-Requirement already satisfied: numpy&lt;2,&gt;=1 in /usr/local/lib/python3.10/dist-packages (from langchain_community) (1.26.4)
-Requirement already satisfied: requests&lt;3,&gt;=2 in /usr/local/lib/python3.10/dist-packages (from langchain_community) (2.32.3)
-Collecting tenacity!=8.4.0,&lt;9.0.0,&gt;=8.1.0 (from langchain_community)
-  Downloading tenacity-8.5.0-py3-none-any.whl.metadata (1.2 kB)
-Requirement already satisfied: aiohappyeyeballs&gt;=2.3.0 in /usr/local/lib/python3.10/dist-packages (from aiohttp&lt;4.0.0,&gt;=3.8.3-&gt;langchain_community) (2.4.0)
-Requirement already satisfied: aiosignal&gt;=1.1.2 in /usr/local/lib/python3.10/dist-packages (from aiohttp&lt;4.0.0,&gt;=3.8.3-&gt;langchain_community) (1.3.1)
-Requirement already satisfied: attrs&gt;=17.3.0 in /usr/local/lib/python3.10/dist-packages (from aiohttp&lt;4.0.0,&gt;=3.8.3-&gt;langchain_community) (24.2.0)
-Requirement already satisfied: frozenlist&gt;=1.1.1 in /usr/local/lib/python3.10/dist-packages (from aiohttp&lt;4.0.0,&gt;=3.8.3-&gt;langchain_community) (1.4.1)
-Requirement already satisfied: multidict&lt;7.0,&gt;=4.5 in /usr/local/lib/python3.10/dist-packages (from aiohttp&lt;4.0.0,&gt;=3.8.3-&gt;langchain_community) (6.0.5)
-Requirement already satisfied: yarl&lt;2.0,&gt;=1.0 in /usr/local/lib/python3.10/dist-packages (from aiohttp&lt;4.0.0,&gt;=3.8.3-&gt;langchain_community) (1.9.4)
-Requirement already satisfied: async-timeout&lt;5.0,&gt;=4.0 in /usr/local/lib/python3.10/dist-packages (from aiohttp&lt;4.0.0,&gt;=3.8.3-&gt;langchain_community) (4.0.3)
-Collecting marshmallow&lt;4.0.0,&gt;=3.18.0 (from dataclasses-json&lt;0.7,&gt;=0.5.7-&gt;langchain_community)
-  Downloading marshmallow-3.22.0-py3-none-any.whl.metadata (7.2 kB)
-Collecting typing-inspect&lt;1,&gt;=0.4.0 (from dataclasses-json&lt;0.7,&gt;=0.5.7-&gt;langchain_community)
-  Downloading typing_inspect-0.9.0-py3-none-any.whl.metadata (1.5 kB)
-Collecting langchain-text-splitters&lt;0.3.0,&gt;=0.2.0 (from langchain&lt;0.3.0,&gt;=0.2.16-&gt;langchain_community)
-  Downloading langchain_text_splitters-0.2.4-py3-none-any.whl.metadata (2.3 kB)
-Requirement already satisfied: pydantic&lt;3,&gt;=1 in /usr/local/lib/python3.10/dist-packages (from langchain&lt;0.3.0,&gt;=0.2.16-&gt;langchain_community) (2.8.2)
-Collecting jsonpatch&lt;2.0,&gt;=1.33 (from langchain-core&lt;0.3.0,&gt;=0.2.38-&gt;langchain_community)
-  Downloading jsonpatch-1.33-py2.py3-none-any.whl.metadata (3.0 kB)
-Requirement already satisfied: packaging&lt;25,&gt;=23.2 in /usr/local/lib/python3.10/dist-packages (from langchain-core&lt;0.3.0,&gt;=0.2.38-&gt;langchain_community) (24.1)
-Requirement already satisfied: typing-extensions&gt;=4.7 in /usr/local/lib/python3.10/dist-packages (from langchain-core&lt;0.3.0,&gt;=0.2.38-&gt;langchain_community) (4.12.2)
-Requirement already satisfied: httpx&lt;1,&gt;=0.23.0 in /usr/local/lib/python3.10/dist-packages (from langsmith&lt;0.2.0,&gt;=0.1.0-&gt;langchain_community) (0.27.2)
-Collecting orjson&lt;4.0.0,&gt;=3.9.14 (from langsmith&lt;0.2.0,&gt;=0.1.0-&gt;langchain_community)
-  Downloading orjson-3.10.7-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (50 kB)
-     <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">50.4/50.4 kB</span> <span class="ansi-red-fg">421.4 kB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>
-Requirement already satisfied: charset-normalizer&lt;4,&gt;=2 in /usr/local/lib/python3.10/dist-packages (from requests&lt;3,&gt;=2-&gt;langchain_community) (3.3.2)
-Requirement already satisfied: idna&lt;4,&gt;=2.5 in /usr/local/lib/python3.10/dist-packages (from requests&lt;3,&gt;=2-&gt;langchain_community) (3.8)
-Requirement already satisfied: urllib3&lt;3,&gt;=1.21.1 in /usr/local/lib/python3.10/dist-packages (from requests&lt;3,&gt;=2-&gt;langchain_community) (2.0.7)
-Requirement already satisfied: certifi&gt;=2017.4.17 in /usr/local/lib/python3.10/dist-packages (from requests&lt;3,&gt;=2-&gt;langchain_community) (2024.8.30)
-Requirement already satisfied: greenlet!=0.4.17 in /usr/local/lib/python3.10/dist-packages (from SQLAlchemy&lt;3,&gt;=1.4-&gt;langchain_community) (3.0.3)
-Requirement already satisfied: anyio in /usr/local/lib/python3.10/dist-packages (from httpx&lt;1,&gt;=0.23.0-&gt;langsmith&lt;0.2.0,&gt;=0.1.0-&gt;langchain_community) (3.7.1)
-Requirement already satisfied: httpcore==1.* in /usr/local/lib/python3.10/dist-packages (from httpx&lt;1,&gt;=0.23.0-&gt;langsmith&lt;0.2.0,&gt;=0.1.0-&gt;langchain_community) (1.0.5)
-Requirement already satisfied: sniffio in /usr/local/lib/python3.10/dist-packages (from httpx&lt;1,&gt;=0.23.0-&gt;langsmith&lt;0.2.0,&gt;=0.1.0-&gt;langchain_community) (1.3.1)
-Requirement already satisfied: h11&lt;0.15,&gt;=0.13 in /usr/local/lib/python3.10/dist-packages (from httpcore==1.*-&gt;httpx&lt;1,&gt;=0.23.0-&gt;langsmith&lt;0.2.0,&gt;=0.1.0-&gt;langchain_community) (0.14.0)
-Collecting jsonpointer&gt;=1.9 (from jsonpatch&lt;2.0,&gt;=1.33-&gt;langchain-core&lt;0.3.0,&gt;=0.2.38-&gt;langchain_community)
-  Downloading jsonpointer-3.0.0-py2.py3-none-any.whl.metadata (2.3 kB)
-Requirement already satisfied: annotated-types&gt;=0.4.0 in /usr/local/lib/python3.10/dist-packages (from pydantic&lt;3,&gt;=1-&gt;langchain&lt;0.3.0,&gt;=0.2.16-&gt;langchain_community) (0.7.0)
-Requirement already satisfied: pydantic-core==2.20.1 in /usr/local/lib/python3.10/dist-packages (from pydantic&lt;3,&gt;=1-&gt;langchain&lt;0.3.0,&gt;=0.2.16-&gt;langchain_community) (2.20.1)
-Collecting mypy-extensions&gt;=0.3.0 (from typing-inspect&lt;1,&gt;=0.4.0-&gt;dataclasses-json&lt;0.7,&gt;=0.5.7-&gt;langchain_community)
-  Downloading mypy_extensions-1.0.0-py3-none-any.whl.metadata (1.1 kB)
-Requirement already satisfied: exceptiongroup in /usr/local/lib/python3.10/dist-packages (from anyio-&gt;httpx&lt;1,&gt;=0.23.0-&gt;langsmith&lt;0.2.0,&gt;=0.1.0-&gt;langchain_community) (1.2.2)
-Downloading langchain_community-0.2.16-py3-none-any.whl (2.3 MB)
-   <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">2.3/2.3 MB</span> <span class="ansi-red-fg">28.9 MB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>
-Downloading dataclasses_json-0.6.7-py3-none-any.whl (28 kB)
-Downloading langchain-0.2.16-py3-none-any.whl (1.0 MB)
-   <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">1.0/1.0 MB</span> <span class="ansi-red-fg">18.5 MB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>
-Downloading langchain_core-0.2.39-py3-none-any.whl (396 kB)
-   <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">396.6/396.6 kB</span> <span class="ansi-red-fg">19.5 MB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>
-Downloading langsmith-0.1.117-py3-none-any.whl (290 kB)
-   <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">290.5/290.5 kB</span> <span class="ansi-red-fg">12.8 MB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>
-Downloading tenacity-8.5.0-py3-none-any.whl (28 kB)
-Downloading jsonpatch-1.33-py2.py3-none-any.whl (12 kB)
-Downloading langchain_text_splitters-0.2.4-py3-none-any.whl (25 kB)
-Downloading marshmallow-3.22.0-py3-none-any.whl (49 kB)
-   <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">49.3/49.3 kB</span> <span class="ansi-red-fg">2.0 MB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>
-Downloading orjson-3.10.7-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (141 kB)
-   <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">141.9/141.9 kB</span> <span class="ansi-red-fg">5.5 MB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>
-Downloading typing_inspect-0.9.0-py3-none-any.whl (8.8 kB)
-Downloading jsonpointer-3.0.0-py2.py3-none-any.whl (7.6 kB)
-Downloading mypy_extensions-1.0.0-py3-none-any.whl (4.7 kB)
-Installing collected packages: tenacity, orjson, mypy-extensions, marshmallow, jsonpointer, typing-inspect, jsonpatch, langsmith, dataclasses-json, langchain-core, langchain-text-splitters, langchain, langchain_community
-  Attempting uninstall: tenacity
-    Found existing installation: tenacity 9.0.0
-    Uninstalling tenacity-9.0.0:
-      Successfully uninstalled tenacity-9.0.0
-Successfully installed dataclasses-json-0.6.7 jsonpatch-1.33 jsonpointer-3.0.0 langchain-0.2.16 langchain-core-0.2.39 langchain-text-splitters-0.2.4 langchain_community-0.2.16 langsmith-0.1.117 marshmallow-3.22.0 mypy-extensions-1.0.0 orjson-3.10.7 tenacity-8.5.0 typing-inspect-0.9.0
-Requirement already satisfied: langchain in /usr/local/lib/python3.10/dist-packages (0.2.16)
-Requirement already satisfied: PyYAML&gt;=5.3 in /usr/local/lib/python3.10/dist-packages (from langchain) (6.0.2)
-Requirement already satisfied: SQLAlchemy&lt;3,&gt;=1.4 in /usr/local/lib/python3.10/dist-packages (from langchain) (2.0.32)
-Requirement already satisfied: aiohttp&lt;4.0.0,&gt;=3.8.3 in /usr/local/lib/python3.10/dist-packages (from langchain) (3.10.5)
-Requirement already satisfied: async-timeout&lt;5.0.0,&gt;=4.0.0 in /usr/local/lib/python3.10/dist-packages (from langchain) (4.0.3)
-Requirement already satisfied: langchain-core&lt;0.3.0,&gt;=0.2.38 in /usr/local/lib/python3.10/dist-packages (from langchain) (0.2.39)
-Requirement already satisfied: langchain-text-splitters&lt;0.3.0,&gt;=0.2.0 in /usr/local/lib/python3.10/dist-packages (from langchain) (0.2.4)
-Requirement already satisfied: langsmith&lt;0.2.0,&gt;=0.1.17 in /usr/local/lib/python3.10/dist-packages (from langchain) (0.1.117)
-Requirement already satisfied: numpy&lt;2,&gt;=1 in /usr/local/lib/python3.10/dist-packages (from langchain) (1.26.4)
-Requirement already satisfied: pydantic&lt;3,&gt;=1 in /usr/local/lib/python3.10/dist-packages (from langchain) (2.8.2)
-Requirement already satisfied: requests&lt;3,&gt;=2 in /usr/local/lib/python3.10/dist-packages (from langchain) (2.32.3)
-Requirement already satisfied: tenacity!=8.4.0,&lt;9.0.0,&gt;=8.1.0 in /usr/local/lib/python3.10/dist-packages (from langchain) (8.5.0)
-Requirement already satisfied: aiohappyeyeballs&gt;=2.3.0 in /usr/local/lib/python3.10/dist-packages (from aiohttp&lt;4.0.0,&gt;=3.8.3-&gt;langchain) (2.4.0)
-Requirement already satisfied: aiosignal&gt;=1.1.2 in /usr/local/lib/python3.10/dist-packages (from aiohttp&lt;4.0.0,&gt;=3.8.3-&gt;langchain) (1.3.1)
-Requirement already satisfied: attrs&gt;=17.3.0 in /usr/local/lib/python3.10/dist-packages (from aiohttp&lt;4.0.0,&gt;=3.8.3-&gt;langchain) (24.2.0)
-Requirement already satisfied: frozenlist&gt;=1.1.1 in /usr/local/lib/python3.10/dist-packages (from aiohttp&lt;4.0.0,&gt;=3.8.3-&gt;langchain) (1.4.1)
-Requirement already satisfied: multidict&lt;7.0,&gt;=4.5 in /usr/local/lib/python3.10/dist-packages (from aiohttp&lt;4.0.0,&gt;=3.8.3-&gt;langchain) (6.0.5)
-Requirement already satisfied: yarl&lt;2.0,&gt;=1.0 in /usr/local/lib/python3.10/dist-packages (from aiohttp&lt;4.0.0,&gt;=3.8.3-&gt;langchain) (1.9.4)
-Requirement already satisfied: jsonpatch&lt;2.0,&gt;=1.33 in /usr/local/lib/python3.10/dist-packages (from langchain-core&lt;0.3.0,&gt;=0.2.38-&gt;langchain) (1.33)
-Requirement already satisfied: packaging&lt;25,&gt;=23.2 in /usr/local/lib/python3.10/dist-packages (from langchain-core&lt;0.3.0,&gt;=0.2.38-&gt;langchain) (24.1)
-Requirement already satisfied: typing-extensions&gt;=4.7 in /usr/local/lib/python3.10/dist-packages (from langchain-core&lt;0.3.0,&gt;=0.2.38-&gt;langchain) (4.12.2)
-Requirement already satisfied: httpx&lt;1,&gt;=0.23.0 in /usr/local/lib/python3.10/dist-packages (from langsmith&lt;0.2.0,&gt;=0.1.17-&gt;langchain) (0.27.2)
-Requirement already satisfied: orjson&lt;4.0.0,&gt;=3.9.14 in /usr/local/lib/python3.10/dist-packages (from langsmith&lt;0.2.0,&gt;=0.1.17-&gt;langchain) (3.10.7)
-Requirement already satisfied: annotated-types&gt;=0.4.0 in /usr/local/lib/python3.10/dist-packages (from pydantic&lt;3,&gt;=1-&gt;langchain) (0.7.0)
-Requirement already satisfied: pydantic-core==2.20.1 in /usr/local/lib/python3.10/dist-packages (from pydantic&lt;3,&gt;=1-&gt;langchain) (2.20.1)
-Requirement already satisfied: charset-normalizer&lt;4,&gt;=2 in /usr/local/lib/python3.10/dist-packages (from requests&lt;3,&gt;=2-&gt;langchain) (3.3.2)
-Requirement already satisfied: idna&lt;4,&gt;=2.5 in /usr/local/lib/python3.10/dist-packages (from requests&lt;3,&gt;=2-&gt;langchain) (3.8)
-Requirement already satisfied: urllib3&lt;3,&gt;=1.21.1 in /usr/local/lib/python3.10/dist-packages (from requests&lt;3,&gt;=2-&gt;langchain) (2.0.7)
-Requirement already satisfied: certifi&gt;=2017.4.17 in /usr/local/lib/python3.10/dist-packages (from requests&lt;3,&gt;=2-&gt;langchain) (2024.8.30)
-Requirement already satisfied: greenlet!=0.4.17 in /usr/local/lib/python3.10/dist-packages (from SQLAlchemy&lt;3,&gt;=1.4-&gt;langchain) (3.0.3)
-Requirement already satisfied: anyio in /usr/local/lib/python3.10/dist-packages (from httpx&lt;1,&gt;=0.23.0-&gt;langsmith&lt;0.2.0,&gt;=0.1.17-&gt;langchain) (3.7.1)
-Requirement already satisfied: httpcore==1.* in /usr/local/lib/python3.10/dist-packages (from httpx&lt;1,&gt;=0.23.0-&gt;langsmith&lt;0.2.0,&gt;=0.1.17-&gt;langchain) (1.0.5)
-Requirement already satisfied: sniffio in /usr/local/lib/python3.10/dist-packages (from httpx&lt;1,&gt;=0.23.0-&gt;langsmith&lt;0.2.0,&gt;=0.1.17-&gt;langchain) (1.3.1)
-Requirement already satisfied: h11&lt;0.15,&gt;=0.13 in /usr/local/lib/python3.10/dist-packages (from httpcore==1.*-&gt;httpx&lt;1,&gt;=0.23.0-&gt;langsmith&lt;0.2.0,&gt;=0.1.17-&gt;langchain) (0.14.0)
-Requirement already satisfied: jsonpointer&gt;=1.9 in /usr/local/lib/python3.10/dist-packages (from jsonpatch&lt;2.0,&gt;=1.33-&gt;langchain-core&lt;0.3.0,&gt;=0.2.38-&gt;langchain) (3.0.0)
-Requirement already satisfied: exceptiongroup in /usr/local/lib/python3.10/dist-packages (from anyio-&gt;httpx&lt;1,&gt;=0.23.0-&gt;langsmith&lt;0.2.0,&gt;=0.1.17-&gt;langchain) (1.2.2)
+<pre>langchain 버전 :  0.3.7
+langchain_community 버전 :  0.3.5
+faiss-cpu 버전 :  1.9.0
+openai 버전 :  1.54.1
 </pre>
 </div>
 </div>
@@ -7709,7 +7583,7 @@ Requirement already satisfied: exceptiongroup in /usr/local/lib/python3.10/dist-
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="ChatGPT-API%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EC%99%B8%EB%B6%80-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%97%B0%EA%B2%B0">ChatGPT API를 활용한 외부 데이터 연결<a class="anchor-link" href="#ChatGPT-API%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EC%99%B8%EB%B6%80-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%97%B0%EA%B2%B0">¶</a></h3>
+<h3 id="01.-ChatGPT-API%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EC%99%B8%EB%B6%80-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%97%B0%EA%B2%B0">01. ChatGPT API를 활용한 외부 데이터 연결<a class="anchor-link" href="#01.-ChatGPT-API%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EC%99%B8%EB%B6%80-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%97%B0%EA%B2%B0">¶</a></h3>
 </div>
 </div>
 </div>
@@ -7728,16 +7602,15 @@ Requirement already satisfied: exceptiongroup in /usr/local/lib/python3.10/dist-
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [9]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">openai</span> <span class="kn">import</span> <span class="n">OpenAI</span>
-<span class="kn">import</span> <span class="nn">os</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">from</span> <span class="nn">getpass</span> <span class="kn">import</span> <span class="n">getpass</span>
 <span class="kn">import</span> <span class="nn">chardet</span>
 
@@ -7749,15 +7622,16 @@ Requirement already satisfied: exceptiongroup in /usr/local/lib/python3.10/dist-
 </div>
 </div>
 </div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>OpenAI API 키를 입력하세요: ··········
-</pre>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">openai</span> <span class="kn">import</span> <span class="n">OpenAI</span>
+</pre></div>
 </div>
 </div>
 </div>
@@ -7767,7 +7641,7 @@ Requirement already satisfied: exceptiongroup in /usr/local/lib/python3.10/dist-
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [13]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 문서 내용 로드 (여러 인코딩 시도)</span>
@@ -7816,7 +7690,7 @@ Requirement already satisfied: exceptiongroup in /usr/local/lib/python3.10/dist-
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre> 인공지능(AI)의 발전과 미래에 대한 내용입니다. AI의 주요 분야와 응용 분야, 그리고 발전에 따른 윤리적, 사회적 문제까지 다양한 측면에서 다루고 있습니다. 또한, AI의 미래에 대한 전망과 적절한 관리
+<pre> 인공지능의 발전과 미래에 대한 내용입니다. 인공지능의 의미, 주요 분야, 응용 분야, 윤리적, 사회적 문제, 미래 전망 등을 다루고 있습니다.
 </pre>
 </div>
 </div>
@@ -7829,7 +7703,7 @@ Requirement already satisfied: exceptiongroup in /usr/local/lib/python3.10/dist-
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="LangChain%EC%9D%84-%ED%99%9C%EC%9A%A9%ED%95%9C-%EC%99%B8%EB%B6%80-%EB%8D%B0%EC%9D%B4%ED%84%B0-%ED%86%B5%ED%95%A9-%EC%98%88%EC%A0%9C">LangChain을 활용한 외부 데이터 통합 예제<a class="anchor-link" href="#LangChain%EC%9D%84-%ED%99%9C%EC%9A%A9%ED%95%9C-%EC%99%B8%EB%B6%80-%EB%8D%B0%EC%9D%B4%ED%84%B0-%ED%86%B5%ED%95%A9-%EC%98%88%EC%A0%9C">¶</a></h3>
+<h3 id="02.-LangChain%EC%9D%84-%ED%99%9C%EC%9A%A9%ED%95%9C-%EC%99%B8%EB%B6%80-%EB%8D%B0%EC%9D%B4%ED%84%B0-%ED%86%B5%ED%95%A9-%EC%98%88%EC%A0%9C">02. LangChain을 활용한 외부 데이터 통합 예제<a class="anchor-link" href="#02.-LangChain%EC%9D%84-%ED%99%9C%EC%9A%A9%ED%95%9C-%EC%99%B8%EB%B6%80-%EB%8D%B0%EC%9D%B4%ED%84%B0-%ED%86%B5%ED%95%A9-%EC%98%88%EC%A0%9C">¶</a></h3>
 </div>
 </div>
 </div>
@@ -7848,75 +7722,46 @@ Requirement already satisfied: exceptiongroup in /usr/local/lib/python3.10/dist-
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="%EC%8B%AC%ED%94%8C-%EC%B4%88%EA%B8%B0-%EB%B2%84%EC%A0%84">심플 초기 버전<a class="anchor-link" href="#%EC%8B%AC%ED%94%8C-%EC%B4%88%EA%B8%B0-%EB%B2%84%EC%A0%84">¶</a></h3>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<ul>
+<li>[자동화] VectorstoreIndexCreator를 사용하여 여러 단계를 자동으로 처리</li>
+<li>[자동화] 문서 로드, 벡터화, 저장소 생성, 검색기 생성 등 대부분의 작업을 내부적으로 처리.</li>
+<li>[단점] 고급 사용자 정의 워크플로우에는 적합하지 않음.</li>
+<li>[단점] 영구적으로 데이터를 저장하고 있지 않음.</li>
+</ul>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [14]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>tiktoken
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Collecting tiktoken
-  Downloading tiktoken-0.7.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (6.6 kB)
-Requirement already satisfied: regex&gt;=2022.1.18 in /usr/local/lib/python3.10/dist-packages (from tiktoken) (2024.5.15)
-Requirement already satisfied: requests&gt;=2.26.0 in /usr/local/lib/python3.10/dist-packages (from tiktoken) (2.32.3)
-Requirement already satisfied: charset-normalizer&lt;4,&gt;=2 in /usr/local/lib/python3.10/dist-packages (from requests&gt;=2.26.0-&gt;tiktoken) (3.3.2)
-Requirement already satisfied: idna&lt;4,&gt;=2.5 in /usr/local/lib/python3.10/dist-packages (from requests&gt;=2.26.0-&gt;tiktoken) (3.8)
-Requirement already satisfied: urllib3&lt;3,&gt;=1.21.1 in /usr/local/lib/python3.10/dist-packages (from requests&gt;=2.26.0-&gt;tiktoken) (2.0.7)
-Requirement already satisfied: certifi&gt;=2017.4.17 in /usr/local/lib/python3.10/dist-packages (from requests&gt;=2.26.0-&gt;tiktoken) (2024.8.30)
-Downloading tiktoken-0.7.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (1.1 MB)
-   <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">1.1/1.1 MB</span> <span class="ansi-red-fg">28.9 MB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>
-Installing collected packages: tiktoken
-Successfully installed tiktoken-0.7.0
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [15]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">from</span> <span class="nn">getpass</span> <span class="kn">import</span> <span class="n">getpass</span>
-<span class="kn">from</span> <span class="nn">langchain.document_loaders</span> <span class="kn">import</span> <span class="n">TextLoader</span>       <span class="c1"># 텍스트 파일을 로드 하는데 사용.</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">langchain.document_loaders</span> <span class="kn">import</span> <span class="n">TextLoader</span>       <span class="c1"># 텍스트 파일을 로드 하는데 사용.</span>
 <span class="kn">from</span> <span class="nn">langchain.indexes</span> <span class="kn">import</span> <span class="n">VectorstoreIndexCreator</span>   <span class="c1"># 문서의 벡터 인덱스를 생성.</span>
-<span class="kn">from</span> <span class="nn">langchain.embeddings.openai</span> <span class="kn">import</span> <span class="n">OpenAIEmbeddings</span>
+<span class="kn">from</span> <span class="nn">langchain_openai</span> <span class="kn">import</span> <span class="n">OpenAIEmbeddings</span>
 <span class="kn">from</span> <span class="nn">langchain.llms</span> <span class="kn">import</span> <span class="n">OpenAI</span>                       <span class="c1"># OpenAI의 언어 모델을 사용하기 위한 클래스</span>
-
-<span class="c1"># API 키 설정</span>
-<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">"OPENAI_API_KEY"</span><span class="p">]</span> <span class="o">=</span> <span class="n">getpass</span><span class="p">(</span><span class="s2">"OpenAI API 키를 입력하세요: "</span><span class="p">)</span>
 </pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>OpenAI API 키를 입력하세요: ··········
-</pre>
 </div>
 </div>
 </div>
@@ -7926,7 +7771,7 @@ Successfully installed tiktoken-0.7.0
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [16]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [9]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 문서 로드</span>
@@ -7957,11 +7802,9 @@ Successfully installed tiktoken-0.7.0
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre>&lt;ipython-input-16-9df72ad1a691&gt;:7: LangChainDeprecationWarning: The class `OpenAIEmbeddings` was deprecated in LangChain 0.0.9 and will be removed in 1.0. An updated version of the class exists in the langchain-openai package and should be used instead. To use it run `pip install -U langchain-openai` and import as `from langchain_openai import OpenAIEmbeddings`.
-  embeddings = OpenAIEmbeddings()   # 벡터 임베딩을 처리하기 위한 클래스
-/usr/local/lib/python3.10/dist-packages/langchain/indexes/vectorstore.py:127: UserWarning: Using InMemoryVectorStore as the default vectorstore.This memory store won't persist data. You should explicitlyspecify a vectorstore when using VectorstoreIndexCreator
+<pre>c:\Users\daniel_wj\anaconda3\envs\langchain1\Lib\site-packages\langchain\indexes\vectorstore.py:128: UserWarning: Using InMemoryVectorStore as the default vectorstore.This memory store won't persist data. You should explicitlyspecify a vectorstore when using VectorstoreIndexCreator
   warnings.warn(
-&lt;ipython-input-16-9df72ad1a691&gt;:11: LangChainDeprecationWarning: The class `OpenAI` was deprecated in LangChain 0.0.10 and will be removed in 1.0. An updated version of the class exists in the langchain-openai package and should be used instead. To use it run `pip install -U langchain-openai` and import as `from langchain_openai import OpenAI`.
+C:\Users\daniel_wj\AppData\Local\Temp\ipykernel_23960\4002558161.py:11: LangChainDeprecationWarning: The class `OpenAI` was deprecated in LangChain 0.0.10 and will be removed in 1.0. An updated version of the class exists in the :class:`~langchain-openai package and should be used instead. To use it run `pip install -U :class:`~langchain-openai` and import as `from :class:`~langchain_openai import OpenAI``.
   llm = OpenAI(temperature=0, max_tokens=150)
 </pre>
 </div>
@@ -7975,16 +7818,343 @@ Successfully installed tiktoken-0.7.0
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<ul>
+<li>/usr/local/lib/python3.10/dist-packages/langchain/indexes/vectorstore.py:128: UserWarning: Using InMemoryVectorStore as the default vectorstore.This memory store won't persist data. You should explicitlyspecify a vectorstore when using VectorstoreIndexCreator
+warnings.warn(</li>
+<li>데이터를 영구적으로 저장하고 있지 않다는 메시지<ul>
+<li>해결 - FAISS와 같은 벡터 저장소를 사용</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="03.-FAISS-%EC%9D%B4%EC%9A%A9-%EA%B0%9C%EC%84%A0-%EB%B2%84%EC%A0%84">03. FAISS 이용 개선 버전<a class="anchor-link" href="#03.-FAISS-%EC%9D%B4%EC%9A%A9-%EA%B0%9C%EC%84%A0-%EB%B2%84%EC%A0%84">¶</a></h3>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [10]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span> 
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 필요한 모듈 임포트</span>
+<span class="kn">from</span> <span class="nn">langchain.vectorstores</span> <span class="kn">import</span> <span class="n">FAISS</span>
+<span class="kn">from</span> <span class="nn">langchain.text_splitter</span> <span class="kn">import</span> <span class="n">RecursiveCharacterTextSplitter</span>
+<span class="kn">from</span> <span class="nn">langchain.document_loaders</span> <span class="kn">import</span> <span class="n">TextLoader</span>
+<span class="kn">from</span> <span class="nn">langchain_openai</span> <span class="kn">import</span> <span class="n">OpenAIEmbeddings</span><span class="p">,</span> <span class="n">ChatOpenAI</span>
+
+<span class="c1"># 문서 로드</span>
+<span class="n">loader</span> <span class="o">=</span> <span class="n">TextLoader</span><span class="p">(</span><span class="s1">'document.txt'</span><span class="p">)</span>
+<span class="n">documents</span> <span class="o">=</span> <span class="n">loader</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
+
+<span class="c1"># 텍스트 분할</span>
+<span class="n">text_splitter</span> <span class="o">=</span> <span class="n">RecursiveCharacterTextSplitter</span><span class="p">(</span><span class="n">chunk_size</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">chunk_overlap</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+<span class="n">splits</span> <span class="o">=</span> <span class="n">text_splitter</span><span class="o">.</span><span class="n">split_documents</span><span class="p">(</span><span class="n">documents</span><span class="p">)</span>
+
+<span class="c1"># 벡터 저장소 생성</span>
+<span class="n">embeddings</span> <span class="o">=</span> <span class="n">OpenAIEmbeddings</span><span class="p">()</span>
+<span class="n">vectorstore</span> <span class="o">=</span> <span class="n">FAISS</span><span class="o">.</span><span class="n">from_documents</span><span class="p">(</span><span class="n">splits</span><span class="p">,</span> <span class="n">embeddings</span><span class="p">)</span>  <span class="c1"># FAISS를 벡터 저장소로 사용</span>
+
+<span class="c1"># OpenAI LLM 생성</span>
+<span class="n">llm</span> <span class="o">=</span> <span class="n">ChatOpenAI</span><span class="p">(</span><span class="n">model_name</span><span class="o">=</span><span class="s2">"gpt-4o-mini"</span><span class="p">,</span> <span class="n">temperature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_tokens</span><span class="o">=</span><span class="mi">150</span> <span class="p">)</span>
+
+<span class="c1"># 질문-답변</span>
+<span class="n">query</span> <span class="o">=</span> <span class="s2">"문서의 주요 내용은 무엇인가요?"</span>
+<span class="n">retriever</span> <span class="o">=</span> <span class="n">vectorstore</span><span class="o">.</span><span class="n">as_retriever</span><span class="p">()</span>  <span class="c1"># FAISS를 검색기로 설정</span>
+
+<span class="c1"># 검색된 문서를 기반으로 응답 생성</span>
+<span class="n">retrieved_docs</span> <span class="o">=</span> <span class="n">retriever</span><span class="o">.</span><span class="n">invoke</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>  <span class="c1"># 문자열 형태의 query 전달</span>
+<span class="n">context</span> <span class="o">=</span> <span class="s2">" "</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">doc</span><span class="o">.</span><span class="n">page_content</span> <span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">retrieved_docs</span><span class="p">])</span>
+
+<span class="c1"># LLM 호출</span>
+<span class="n">prompt</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"다음 문서를 바탕으로 질문에 답변해주세요:</span><span class="se">\n\n</span><span class="si">{</span><span class="n">context</span><span class="si">}</span><span class="se">\n\n</span><span class="s2">질문: </span><span class="si">{</span><span class="n">query</span><span class="si">}</span><span class="se">\n</span><span class="s2">답변:"</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">llm</span><span class="o">.</span><span class="n">invoke</span><span class="p">(</span><span class="n">prompt</span><span class="p">)</span>  <span class="c1"># 문자열 형태의 prompt 전달</span>
+
+<span class="c1"># 결과 출력</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
 </pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>content='문서의 주요 내용은 인공지능(AI)의 발전과 그 응용 분야, 그리고 AI 기술의 발전에 따른 윤리적 및 사회적 문제를 다루고 있습니다. AI는 금융, 의료, 자율주행 자동차, 개인화된 추천 시스템, 스마트홈 기술, 기후 변화 예측 등 다양한 산업에서 혁신적인 변화를 일으키고 있으며, 머신러닝, 딥러닝, 자연어 처리, 컴퓨터 비전 등의 기술이 핵심 역할을 하고 있습니다. \n\n또한, AI의 발전은 개인정보 보호, 일자리 대체, AI의 편향성, 책임 있는 AI 개발과 사용 등 여러 윤리적, 사회적 문제를 동반하고 있으며' additional_kwargs={'refusal': None} response_metadata={'token_usage': {'completion_tokens': 150, 'prompt_tokens': 1612, 'total_tokens': 1762, 'completion_tokens_details': {'accepted_prediction_tokens': 0, 'audio_tokens': 0, 'reasoning_tokens': 0, 'rejected_prediction_tokens': 0}, 'prompt_tokens_details': {'audio_tokens': 0, 'cached_tokens': 0}}, 'model_name': 'gpt-4o-mini-2024-07-18', 'system_fingerprint': 'fp_0ba0d124f1', 'finish_reason': 'length', 'logprobs': None} id='run-1a6856f0-9195-47dd-83e1-3237df1e2efe-0' usage_metadata={'input_tokens': 1612, 'output_tokens': 150, 'total_tokens': 1762, 'input_token_details': {'audio': 0, 'cache_read': 0}, 'output_token_details': {'audio': 0, 'reasoning': 0}}
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="%EC%BD%94%EB%93%9C%EC%9D%98-%ED%95%9C%EA%B3%84">코드의 한계<a class="anchor-link" href="#%EC%BD%94%EB%93%9C%EC%9D%98-%ED%95%9C%EA%B3%84">¶</a></h3><ul>
+<li>확장성 부족: 복잡한 워크플로우(예: 체인 연결) 구현이 어려움.</li>
+<li>프롬프트 유연성 제한: 정적 프롬프트 생성.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="04.-%EC%B5%9C%EC%A2%85-%EA%B5%AC%ED%98%84-%EC%BD%94%EB%93%9C---(%EC%A3%BC%EC%84%9D-Simple)">04. 최종 구현 코드 - (주석 Simple)<a class="anchor-link" href="#04.-%EC%B5%9C%EC%A2%85-%EA%B5%AC%ED%98%84-%EC%BD%94%EB%93%9C---(%EC%A3%BC%EC%84%9D-Simple)">¶</a></h3>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<ul>
+<li>LangChain의 체인 기능(create_retrieval_chain)을 활용하여 검색과 답변 생성을 연결.</li>
+<li>검색, 문서 결합, GPT 호출 등의 단계를 체인으로 자동화.</li>
+</ul>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [11]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">langchain.text_splitter</span> <span class="kn">import</span> <span class="n">RecursiveCharacterTextSplitter</span>
+<span class="kn">from</span> <span class="nn">langchain.chains</span> <span class="kn">import</span> <span class="n">create_retrieval_chain</span>
+<span class="kn">from</span> <span class="nn">langchain.chains.combine_documents</span> <span class="kn">import</span> <span class="n">create_stuff_documents_chain</span>
+
+<span class="kn">from</span> <span class="nn">langchain_openai</span> <span class="kn">import</span> <span class="n">OpenAIEmbeddings</span><span class="p">,</span> <span class="n">ChatOpenAI</span>
+<span class="kn">from</span> <span class="nn">langchain_core.prompts</span> <span class="kn">import</span> <span class="n">ChatPromptTemplate</span>
+
+<span class="kn">from</span> <span class="nn">langchain_community.vectorstores</span> <span class="kn">import</span> <span class="n">FAISS</span>
+<span class="kn">from</span> <span class="nn">langchain_community.document_loaders</span> <span class="kn">import</span> <span class="n">TextLoader</span>
+
+<span class="c1"># 문서 로드</span>
+<span class="c1"># TextLoader를 사용하여 document.txt 파일에서 텍스트 데이터를 읽어옵니다.</span>
+<span class="n">loader</span> <span class="o">=</span> <span class="n">TextLoader</span><span class="p">(</span><span class="s1">'document.txt'</span><span class="p">)</span>
+
+<span class="c1"># 문서 전체 내용을 documents 변수에 저장</span>
+<span class="n">documents</span> <span class="o">=</span> <span class="n">loader</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
+
+<span class="c1"># 문서 분할</span>
+<span class="c1"># chunk_size: 각 청크의 최대 문자 수</span>
+<span class="c1"># chunk_overlap: 연속된 청크 간의 중복되는 문자 수 (문맥 유지를 위해)</span>
+<span class="n">text_splitter</span> <span class="o">=</span> <span class="n">RecursiveCharacterTextSplitter</span><span class="p">(</span>
+    <span class="n">chunk_size</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
+    <span class="n">chunk_overlap</span><span class="o">=</span><span class="mi">200</span>
+<span class="p">)</span>
+<span class="n">splits</span> <span class="o">=</span> <span class="n">text_splitter</span><span class="o">.</span><span class="n">split_documents</span><span class="p">(</span><span class="n">documents</span><span class="p">)</span>
+
+<span class="c1"># 벡터 저장소 생성</span>
+<span class="n">embeddings</span> <span class="o">=</span> <span class="n">OpenAIEmbeddings</span><span class="p">()</span>
+<span class="n">vector_store</span> <span class="o">=</span> <span class="n">FAISS</span><span class="o">.</span><span class="n">from_documents</span><span class="p">(</span><span class="n">splits</span><span class="p">,</span> <span class="n">embeddings</span><span class="p">)</span>
+
+<span class="c1"># 검색기 생성</span>
+<span class="n">retriever</span> <span class="o">=</span> <span class="n">vector_store</span><span class="o">.</span><span class="n">as_retriever</span><span class="p">()</span>
+
+<span class="c1"># LLM 설정</span>
+<span class="n">llm</span> <span class="o">=</span> <span class="n">ChatOpenAI</span><span class="p">(</span><span class="n">model_name</span><span class="o">=</span><span class="s2">"gpt-4o-mini"</span><span class="p">,</span> <span class="n">temperature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_tokens</span><span class="o">=</span><span class="mi">150</span> <span class="p">)</span>
+
+<span class="c1"># 동적 프롬프트 생성을 위한 템플릿 정의.</span>
+<span class="c1"># 프롬프트 템플릿에서 정의된 변수(context와 question)는 체인이 실행될 때 반드시 제공되어야 함.</span>
+<span class="n">prompt</span> <span class="o">=</span> <span class="n">ChatPromptTemplate</span><span class="o">.</span><span class="n">from_template</span><span class="p">(</span><span class="s2">"""</span>
+<span class="s2">다음 문서를 바탕으로 질문에 답변해주세요.</span>
+<span class="s2">문서: </span><span class="si">{context}</span>
+<span class="s2">질문: </span><span class="si">{input}</span>
+<span class="s2">"""</span><span class="p">)</span>
+
+<span class="c1"># 문서 결합 체인 생성</span>
+<span class="n">document_chain</span> <span class="o">=</span> <span class="n">create_stuff_documents_chain</span><span class="p">(</span><span class="n">llm</span><span class="p">,</span> <span class="n">prompt</span><span class="p">)</span>
+
+<span class="c1"># 검색 체인 생성</span>
+<span class="n">retrieval_chain</span> <span class="o">=</span> <span class="n">create_retrieval_chain</span><span class="p">(</span><span class="n">retriever</span><span class="p">,</span> <span class="n">document_chain</span><span class="p">)</span>
+
+<span class="c1"># 질문-답변</span>
+<span class="n">query</span> <span class="o">=</span> <span class="s2">"문서의 주요 내용은 무엇인가요?"</span>
+
+<span class="c1"># retrieval_chain.invoke에 필요한 변수 제공</span>
+<span class="c1"># 방법 1: input 키 사용</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">retrieval_chain</span><span class="o">.</span><span class="n">invoke</span><span class="p">({</span>
+    <span class="s2">"input"</span><span class="p">:</span> <span class="n">query</span>
+<span class="p">})</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="p">[</span><span class="s2">"answer"</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>문서의 주요 내용은 인공지능(AI)의 발전과 그 응용 분야, 그리고 AI 발전에 따른 윤리적 및 사회적 문제를 다루고 있습니다. 
+
+1. **AI의 역할과 응용 분야**: AI는 금융, 의료, 자율주행 자동차, 개인화된 추천 시스템, 스마트홈 기술, 기후 변화 예측 등 다양한 산업에서 혁신적인 변화를 일으키고 있으며, 머신러닝, 딥러닝, 자연어 처리, 컴퓨터 비전 등의 기술이 활용되고 있습니다.
+
+2. **AI 발전의 윤리적, 사회적 문제**: AI의 발전은 개인정보 보호, 일자리 대체, AI의 편향성, 책임
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="%EC%A2%80-%EB%8D%94-%EC%9E%90%EC%84%B8%ED%95%9C-%EC%84%A4%EB%AA%85">좀 더 자세한 설명<a class="anchor-link" href="#%EC%A2%80-%EB%8D%94-%EC%9E%90%EC%84%B8%ED%95%9C-%EC%84%A4%EB%AA%85">¶</a></h3>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [12]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">langchain.text_splitter</span> <span class="kn">import</span> <span class="n">RecursiveCharacterTextSplitter</span>
+<span class="kn">from</span> <span class="nn">langchain.chains</span> <span class="kn">import</span> <span class="n">create_retrieval_chain</span>
+<span class="kn">from</span> <span class="nn">langchain.chains.combine_documents</span> <span class="kn">import</span> <span class="n">create_stuff_documents_chain</span>
+
+<span class="kn">from</span> <span class="nn">langchain_openai</span> <span class="kn">import</span> <span class="n">OpenAIEmbeddings</span><span class="p">,</span> <span class="n">ChatOpenAI</span>
+<span class="kn">from</span> <span class="nn">langchain_core.prompts</span> <span class="kn">import</span> <span class="n">ChatPromptTemplate</span>
+
+<span class="kn">from</span> <span class="nn">langchain_community.vectorstores</span> <span class="kn">import</span> <span class="n">FAISS</span>
+<span class="kn">from</span> <span class="nn">langchain_community.document_loaders</span> <span class="kn">import</span> <span class="n">TextLoader</span>
+
+<span class="c1"># 문서 로드</span>
+<span class="c1"># TextLoader를 사용하여 document.txt 파일에서 텍스트 데이터를 읽어옵니다.</span>
+<span class="n">loader</span> <span class="o">=</span> <span class="n">TextLoader</span><span class="p">(</span><span class="s1">'document.txt'</span><span class="p">)</span>
+
+<span class="c1"># 문서 전체 내용을 documents 변수에 저장</span>
+<span class="n">documents</span> <span class="o">=</span> <span class="n">loader</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
+
+<span class="c1"># 문서 분할</span>
+<span class="c1"># chunk_size: 각 청크의 최대 문자 수</span>
+<span class="c1"># chunk_overlap: 연속된 청크 간의 중복되는 문자 수 (문맥 유지를 위해)</span>
+
+<span class="c1"># 긴 문서를 처리하기 위해 1,000자 크기의 청크로 분할</span>
+<span class="c1"># chunk_overlap=200: 각 청크 사이에 200자를 겹치게 하여 문맥을 유지합니다.</span>
+<span class="n">text_splitter</span> <span class="o">=</span> <span class="n">RecursiveCharacterTextSplitter</span><span class="p">(</span>
+    <span class="n">chunk_size</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
+    <span class="n">chunk_overlap</span><span class="o">=</span><span class="mi">200</span>
+<span class="p">)</span>
+
+<span class="c1"># 청크화된 텍스트를 splits 변수에 저장</span>
+<span class="n">splits</span> <span class="o">=</span> <span class="n">text_splitter</span><span class="o">.</span><span class="n">split_documents</span><span class="p">(</span><span class="n">documents</span><span class="p">)</span>
+
+<span class="c1"># 벡터 저장소 생성</span>
+<span class="c1"># OpenAIEmbeddings: 텍스트를 벡터로 변환하는 임베딩 모델을 사용</span>
+<span class="c1"># FAISS: 변환된 벡터를 저장하고 유사도 검색을 수행하는 벡터 저장소 라이브러리</span>
+<span class="n">embeddings</span> <span class="o">=</span> <span class="n">OpenAIEmbeddings</span><span class="p">()</span>
+
+<span class="c1"># vector_store에 텍스트 청크의 벡터가 저장</span>
+<span class="n">vector_store</span> <span class="o">=</span> <span class="n">FAISS</span><span class="o">.</span><span class="n">from_documents</span><span class="p">(</span><span class="n">splits</span><span class="p">,</span> <span class="n">embeddings</span><span class="p">)</span>
+
+<span class="c1"># 검색기 생성</span>
+<span class="c1"># FAISS 저장소에서 텍스트를 검색할 수 있는 검색기를 생성</span>
+<span class="n">retriever</span> <span class="o">=</span> <span class="n">vector_store</span><span class="o">.</span><span class="n">as_retriever</span><span class="p">()</span>
+
+<span class="c1"># LLM 설정</span>
+<span class="n">llm</span> <span class="o">=</span> <span class="n">ChatOpenAI</span><span class="p">(</span>
+    <span class="n">model_name</span><span class="o">=</span><span class="s2">"gpt-4o-mini"</span><span class="p">,</span> <span class="n">temperature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>  <span class="n">max_tokens</span><span class="o">=</span><span class="mi">150</span>
+<span class="p">)</span>
+
+<span class="c1"># 프롬프트 템플릿 생성</span>
+<span class="c1"># 동적 프롬프트 생성을 위한 템플릿 정의.</span>
+<span class="c1">#   - 프롬프트 템플릿에서 정의된 변수(context와 question)는 체인이 실행될 때 반드시 제공되어야 함.</span>
+<span class="c1"># GPT 모델에 전달할 프롬프트 형식을 정의</span>
+<span class="c1"># {context}: 검색된 문서 내용이 삽입됩니다.</span>
+<span class="c1"># {input}: 사용자의 질문이 삽입됩니다.</span>
+<span class="n">prompt</span> <span class="o">=</span> <span class="n">ChatPromptTemplate</span><span class="o">.</span><span class="n">from_template</span><span class="p">(</span><span class="s2">"""</span>
+<span class="s2">다음 문서를 바탕으로 질문에 답변해주세요.</span>
+
+<span class="s2">문서: </span><span class="si">{context}</span>
+
+<span class="s2">질문: </span><span class="si">{input}</span>
+<span class="s2">"""</span><span class="p">)</span>
+
+<span class="c1"># 문서 결합 체인 생성</span>
+<span class="c1"># 검색된 문서를 결합하고 GPT 모델에 전달하기 위한 체인을 생성</span>
+<span class="n">document_chain</span> <span class="o">=</span> <span class="n">create_stuff_documents_chain</span><span class="p">(</span><span class="n">llm</span><span class="p">,</span> <span class="n">prompt</span><span class="p">)</span>
+
+<span class="c1"># 검색 체인 생성</span>
+<span class="c1"># 검색기와 문서 결합 체인을 연결하여 검색 및 질문-답변 기능을 통합한 체인을 생성</span>
+<span class="n">retrieval_chain</span> <span class="o">=</span> <span class="n">create_retrieval_chain</span><span class="p">(</span><span class="n">retriever</span><span class="p">,</span> <span class="n">document_chain</span><span class="p">)</span>
+
+<span class="c1"># 질문-답변</span>
+<span class="n">query</span> <span class="o">=</span> <span class="s2">"문서의 주요 내용은 무엇인가요?"</span>
+
+<span class="c1"># retrieval_chain.invoke에 필요한 변수 제공</span>
+<span class="c1"># retriever가 유사한 문서를 검색해 context로 전달</span>
+<span class="c1"># document_chain이 context와 query를 사용해 GPT 모델의 응답을 생성</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">retrieval_chain</span><span class="o">.</span><span class="n">invoke</span><span class="p">({</span>
+    <span class="s2">"input"</span><span class="p">:</span> <span class="n">query</span>
+<span class="p">})</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="p">[</span><span class="s2">"answer"</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>문서의 주요 내용은 인공지능(AI)의 발전과 그 응용 분야, 그리고 AI 기술의 발전에 따른 윤리적 및 사회적 문제를 다루고 있습니다. 
+
+1. **AI의 역할과 응용 분야**: AI는 금융, 의료, 자율주행 자동차, 개인화된 추천 시스템, 스마트홈 기술, 기후 변화 예측 등 다양한 산업에서 혁신적인 변화를 일으키고 있으며, 알고리즘 트레이딩, 사기 탐지, 신용 평가 등 금융 리스크 관리에서도 중요한 역할을 하고 있습니다.
+
+2. **AI 발전의 윤리적, 사회적 문제**: AI의 발전은 개인정보 보호, 일자리 대체, AI의
+</pre>
 </div>
 </div>
 </div>

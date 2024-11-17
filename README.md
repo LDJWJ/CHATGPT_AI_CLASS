@@ -35,10 +35,11 @@
 
 
  * LangChain
-    * LangChain_맥락 이어가기 (chatgpt api, langchain) [HTML](https://ldjwj.github.io/CHATGPT_AI_CLASS/06_LangChain_맥락이어가기_V10.html) [PDF] (https://ldjwj.github.io/CHATGPT_AI_CLASS/06_LangChain_맥락이어가기_V10.pdf)
-    * LangChain_외부데이터연결 [HTML](https://ldjwj.github.io/CHATGPT_AI_CLASS/07_LangChain_외부데이터연결_V10.html) [PDF] (https://ldjwj.github.io/CHATGPT_AI_CLASS/07_LangChain_외부데이터연결_V10.pdf)
-    * LangChain_간단한챗봇 [HTML](https://ldjwj.github.io/CHATGPT_AI_CLASS/LangChain/03_LangChain_SimpleChat_V10.html)  [PDF](https://ldjwj.github.io/CHATGPT_AI_CLASS/LangChain/03_LangChain_SimpleChat_V10.pdf)
-	* LangChain_텍스트감성분류체인 [HTML](https://ldjwj.github.io/CHATGPT_AI_CLASS/LangChain/04_LangChain_TextClassfication_V10.html)  [PDF](https://ldjwj.github.io/CHATGPT_AI_CLASS/LangChain/04_LangChain_TextClassfication_V10.pdf)
+    * LangChain_간단한챗봇 [HTML](https://ldjwj.github.io/CHATGPT_AI_CLASS/LangChain/01_LangChain_간단한챗봇_V10_2411.html)  [PDF](https://ldjwj.github.io/CHATGPT_AI_CLASS/LangChain/01_LangChain_간단한챗봇_V10_2411.pdf)
+	  * LangChain_텍스트감성분류체인 [HTML](https://ldjwj.github.io/CHATGPT_AI_CLASS/LangChain/02_LangChain_TextClassfication_V10.html)  [PDF](https://ldjwj.github.io/CHATGPT_AI_CLASS/LangChain/02_LangChain_TextClassfication_V10.pdf)
+    * LangChain_맥락 이어가기 (chatgpt api, langchain) [HTML](https://ldjwj.github.io/CHATGPT_AI_CLASS/LangChain/03_LangChain_맥락이어가기_local_V10_2411.html) [PDF] (https://ldjwj.github.io/CHATGPT_AI_CLASS/LangChain/03_LangChain_맥락이어가기_local_V10_2411.pdf)
+    * LangChain_외부데이터연결 [HTML](https://ldjwj.github.io/CHATGPT_AI_CLASS/LangChain/04_LangChain_외부데이터연결_local_V10_2411.html) [PDF] (https://ldjwj.github.io/CHATGPT_AI_CLASS/LangChain/04_LangChain_외부데이터연결_local_V10_2411.pdf)
+
 	* LangChain_PDF_RAG [HTML](https://ldjwj.github.io/CHATGPT_AI_CLASS/LangChain/05_LangChain_PDF_RAG_V10.html)  [PDF](https://ldjwj.github.io/CHATGPT_AI_CLASS/LangChain/05_LangChain_PDF_RAG_V10.pdf)
 	* LangChain_PDF_RAG 개선 [HTML](https://ldjwj.github.io/CHATGPT_AI_CLASS/LangChain/06_LangChain_PDF_RAG2_V10.html)  [PDF](https://ldjwj.github.io/CHATGPT_AI_CLASS/LangChain/05_LangChain_PDF_RAG_V10.pdf)
 

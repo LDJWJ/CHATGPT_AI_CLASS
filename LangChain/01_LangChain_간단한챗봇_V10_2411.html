@@ -3,7 +3,7 @@
 <html lang="en">
 <head><meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>01_LangChain_맥락이어가기</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>01_LangChain_간단한챗봇_V10_2411</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <style type="text/css">
     pre { line-height: 125%; }
 td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
@@ -7482,7 +7482,7 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="LangChain%EC%9D%B4%EB%9E%80-%EB%AC%B4%EC%97%87%EC%9D%B8%EA%B0%80?">LangChain이란 무엇인가?<a class="anchor-link" href="#LangChain%EC%9D%B4%EB%9E%80-%EB%AC%B4%EC%97%87%EC%9D%B8%EA%B0%80?">¶</a></h3>
+<h2 id="LangChain%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EA%B0%84%EB%8B%A8%ED%95%9C-%EC%B1%97%EB%B4%87-%EB%A7%8C%EB%93%A4%EC%96%B4%EB%B3%B4%EA%B8%B0">LangChain를 활용한 간단한 챗봇 만들어보기<a class="anchor-link" href="#LangChain%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EA%B0%84%EB%8B%A8%ED%95%9C-%EC%B1%97%EB%B4%87-%EB%A7%8C%EB%93%A4%EC%96%B4%EB%B3%B4%EA%B8%B0">¶</a></h2>
 </div>
 </div>
 </div>
@@ -7493,34 +7493,8 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<ul>
-<li>LangChain은 대규모 언어 모델(LLM)을 활용하여 응용 프로그램을 개발하기 위한 프레임워크</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="%EB%AC%B4%EC%97%87%EC%9D%B4-%EA%B0%80%EB%8A%A5%ED%95%9C%EA%B0%80?-ChatGPT-API%EC%99%80-%EB%AC%B4%EC%97%87%EC%9D%B4-%EB%8B%A4%EB%A5%B8%EA%B0%80%EC%9A%94?">무엇이 가능한가? ChatGPT API와 무엇이 다른가요?<a class="anchor-link" href="#%EB%AC%B4%EC%97%87%EC%9D%B4-%EA%B0%80%EB%8A%A5%ED%95%9C%EA%B0%80?-ChatGPT-API%EC%99%80-%EB%AC%B4%EC%97%87%EC%9D%B4-%EB%8B%A4%EB%A5%B8%EA%B0%80%EC%9A%94?">¶</a></h3>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<ul>
-<li>LangChain: 대화 기록을 유지하고 관리하는 메모리 시스템을 제공</li>
-<li>ChatGPT API: 개발자가 직접 대화 맥락을 관리</li>
-</ul>
+<h3 id="%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC-%EC%84%A4%EC%B9%98">라이브러리 설치<a class="anchor-link" href="#%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC-%EC%84%A4%EC%B9%98">¶</a></h3><pre><code>pip install -Uq langchain_core langchain_openai langchain
+</code></pre>
 </div>
 </div>
 </div>
@@ -7532,7 +7506,7 @@ a.anchor-link {
 <div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>openai
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>-Uq<span class="w"> </span>langchain_core<span class="w"> </span>langchain_openai<span class="w"> </span>langchain
 </pre></div>
 </div>
 </div>
@@ -7545,182 +7519,9 @@ a.anchor-link {
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Collecting openai
-  Downloading openai-1.44.1-py3-none-any.whl.metadata (22 kB)
-Requirement already satisfied: anyio&lt;5,&gt;=3.5.0 in /usr/local/lib/python3.10/dist-packages (from openai) (3.7.1)
-Requirement already satisfied: distro&lt;2,&gt;=1.7.0 in /usr/lib/python3/dist-packages (from openai) (1.7.0)
-Collecting httpx&lt;1,&gt;=0.23.0 (from openai)
-  Downloading httpx-0.27.2-py3-none-any.whl.metadata (7.1 kB)
-Collecting jiter&lt;1,&gt;=0.4.0 (from openai)
-  Downloading jiter-0.5.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (3.6 kB)
-Requirement already satisfied: pydantic&lt;3,&gt;=1.9.0 in /usr/local/lib/python3.10/dist-packages (from openai) (2.8.2)
-Requirement already satisfied: sniffio in /usr/local/lib/python3.10/dist-packages (from openai) (1.3.1)
-Requirement already satisfied: tqdm&gt;4 in /usr/local/lib/python3.10/dist-packages (from openai) (4.66.5)
-Requirement already satisfied: typing-extensions&lt;5,&gt;=4.11 in /usr/local/lib/python3.10/dist-packages (from openai) (4.12.2)
-Requirement already satisfied: idna&gt;=2.8 in /usr/local/lib/python3.10/dist-packages (from anyio&lt;5,&gt;=3.5.0-&gt;openai) (3.8)
-Requirement already satisfied: exceptiongroup in /usr/local/lib/python3.10/dist-packages (from anyio&lt;5,&gt;=3.5.0-&gt;openai) (1.2.2)
-Requirement already satisfied: certifi in /usr/local/lib/python3.10/dist-packages (from httpx&lt;1,&gt;=0.23.0-&gt;openai) (2024.8.30)
-Collecting httpcore==1.* (from httpx&lt;1,&gt;=0.23.0-&gt;openai)
-  Downloading httpcore-1.0.5-py3-none-any.whl.metadata (20 kB)
-Collecting h11&lt;0.15,&gt;=0.13 (from httpcore==1.*-&gt;httpx&lt;1,&gt;=0.23.0-&gt;openai)
-  Downloading h11-0.14.0-py3-none-any.whl.metadata (8.2 kB)
-Requirement already satisfied: annotated-types&gt;=0.4.0 in /usr/local/lib/python3.10/dist-packages (from pydantic&lt;3,&gt;=1.9.0-&gt;openai) (0.7.0)
-Requirement already satisfied: pydantic-core==2.20.1 in /usr/local/lib/python3.10/dist-packages (from pydantic&lt;3,&gt;=1.9.0-&gt;openai) (2.20.1)
-Downloading openai-1.44.1-py3-none-any.whl (373 kB)
-   <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">373.5/373.5 kB</span> <span class="ansi-red-fg">6.3 MB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>
-Downloading httpx-0.27.2-py3-none-any.whl (76 kB)
-   <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">76.4/76.4 kB</span> <span class="ansi-red-fg">3.2 MB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>
-Downloading httpcore-1.0.5-py3-none-any.whl (77 kB)
-   <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">77.9/77.9 kB</span> <span class="ansi-red-fg">1.9 MB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>
-Downloading jiter-0.5.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (318 kB)
-   <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">318.9/318.9 kB</span> <span class="ansi-red-fg">9.4 MB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>
-Downloading h11-0.14.0-py3-none-any.whl (58 kB)
-   <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">58.3/58.3 kB</span> <span class="ansi-red-fg">2.8 MB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>
-Installing collected packages: jiter, h11, httpcore, httpx, openai
-Successfully installed h11-0.14.0 httpcore-1.0.5 httpx-0.27.2 jiter-0.5.0 openai-1.44.1
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>langchain_community
-<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>langchain
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Collecting langchain_community
-  Downloading langchain_community-0.2.16-py3-none-any.whl.metadata (2.7 kB)
-Requirement already satisfied: PyYAML&gt;=5.3 in /usr/local/lib/python3.10/dist-packages (from langchain_community) (6.0.2)
-Requirement already satisfied: SQLAlchemy&lt;3,&gt;=1.4 in /usr/local/lib/python3.10/dist-packages (from langchain_community) (2.0.32)
-Requirement already satisfied: aiohttp&lt;4.0.0,&gt;=3.8.3 in /usr/local/lib/python3.10/dist-packages (from langchain_community) (3.10.5)
-Collecting dataclasses-json&lt;0.7,&gt;=0.5.7 (from langchain_community)
-  Downloading dataclasses_json-0.6.7-py3-none-any.whl.metadata (25 kB)
-Collecting langchain&lt;0.3.0,&gt;=0.2.16 (from langchain_community)
-  Downloading langchain-0.2.16-py3-none-any.whl.metadata (7.1 kB)
-Collecting langchain-core&lt;0.3.0,&gt;=0.2.38 (from langchain_community)
-  Downloading langchain_core-0.2.39-py3-none-any.whl.metadata (6.2 kB)
-Collecting langsmith&lt;0.2.0,&gt;=0.1.0 (from langchain_community)
-  Downloading langsmith-0.1.117-py3-none-any.whl.metadata (13 kB)
-Requirement already satisfied: numpy&lt;2,&gt;=1 in /usr/local/lib/python3.10/dist-packages (from langchain_community) (1.26.4)
-Requirement already satisfied: requests&lt;3,&gt;=2 in /usr/local/lib/python3.10/dist-packages (from langchain_community) (2.32.3)
-Collecting tenacity!=8.4.0,&lt;9.0.0,&gt;=8.1.0 (from langchain_community)
-  Downloading tenacity-8.5.0-py3-none-any.whl.metadata (1.2 kB)
-Requirement already satisfied: aiohappyeyeballs&gt;=2.3.0 in /usr/local/lib/python3.10/dist-packages (from aiohttp&lt;4.0.0,&gt;=3.8.3-&gt;langchain_community) (2.4.0)
-Requirement already satisfied: aiosignal&gt;=1.1.2 in /usr/local/lib/python3.10/dist-packages (from aiohttp&lt;4.0.0,&gt;=3.8.3-&gt;langchain_community) (1.3.1)
-Requirement already satisfied: attrs&gt;=17.3.0 in /usr/local/lib/python3.10/dist-packages (from aiohttp&lt;4.0.0,&gt;=3.8.3-&gt;langchain_community) (24.2.0)
-Requirement already satisfied: frozenlist&gt;=1.1.1 in /usr/local/lib/python3.10/dist-packages (from aiohttp&lt;4.0.0,&gt;=3.8.3-&gt;langchain_community) (1.4.1)
-Requirement already satisfied: multidict&lt;7.0,&gt;=4.5 in /usr/local/lib/python3.10/dist-packages (from aiohttp&lt;4.0.0,&gt;=3.8.3-&gt;langchain_community) (6.0.5)
-Requirement already satisfied: yarl&lt;2.0,&gt;=1.0 in /usr/local/lib/python3.10/dist-packages (from aiohttp&lt;4.0.0,&gt;=3.8.3-&gt;langchain_community) (1.9.4)
-Requirement already satisfied: async-timeout&lt;5.0,&gt;=4.0 in /usr/local/lib/python3.10/dist-packages (from aiohttp&lt;4.0.0,&gt;=3.8.3-&gt;langchain_community) (4.0.3)
-Collecting marshmallow&lt;4.0.0,&gt;=3.18.0 (from dataclasses-json&lt;0.7,&gt;=0.5.7-&gt;langchain_community)
-  Downloading marshmallow-3.22.0-py3-none-any.whl.metadata (7.2 kB)
-Collecting typing-inspect&lt;1,&gt;=0.4.0 (from dataclasses-json&lt;0.7,&gt;=0.5.7-&gt;langchain_community)
-  Downloading typing_inspect-0.9.0-py3-none-any.whl.metadata (1.5 kB)
-Collecting langchain-text-splitters&lt;0.3.0,&gt;=0.2.0 (from langchain&lt;0.3.0,&gt;=0.2.16-&gt;langchain_community)
-  Downloading langchain_text_splitters-0.2.4-py3-none-any.whl.metadata (2.3 kB)
-Requirement already satisfied: pydantic&lt;3,&gt;=1 in /usr/local/lib/python3.10/dist-packages (from langchain&lt;0.3.0,&gt;=0.2.16-&gt;langchain_community) (2.8.2)
-Collecting jsonpatch&lt;2.0,&gt;=1.33 (from langchain-core&lt;0.3.0,&gt;=0.2.38-&gt;langchain_community)
-  Downloading jsonpatch-1.33-py2.py3-none-any.whl.metadata (3.0 kB)
-Requirement already satisfied: packaging&lt;25,&gt;=23.2 in /usr/local/lib/python3.10/dist-packages (from langchain-core&lt;0.3.0,&gt;=0.2.38-&gt;langchain_community) (24.1)
-Requirement already satisfied: typing-extensions&gt;=4.7 in /usr/local/lib/python3.10/dist-packages (from langchain-core&lt;0.3.0,&gt;=0.2.38-&gt;langchain_community) (4.12.2)
-Requirement already satisfied: httpx&lt;1,&gt;=0.23.0 in /usr/local/lib/python3.10/dist-packages (from langsmith&lt;0.2.0,&gt;=0.1.0-&gt;langchain_community) (0.27.2)
-Collecting orjson&lt;4.0.0,&gt;=3.9.14 (from langsmith&lt;0.2.0,&gt;=0.1.0-&gt;langchain_community)
-  Downloading orjson-3.10.7-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (50 kB)
-     <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">50.4/50.4 kB</span> <span class="ansi-red-fg">890.1 kB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>
-Requirement already satisfied: charset-normalizer&lt;4,&gt;=2 in /usr/local/lib/python3.10/dist-packages (from requests&lt;3,&gt;=2-&gt;langchain_community) (3.3.2)
-Requirement already satisfied: idna&lt;4,&gt;=2.5 in /usr/local/lib/python3.10/dist-packages (from requests&lt;3,&gt;=2-&gt;langchain_community) (3.8)
-Requirement already satisfied: urllib3&lt;3,&gt;=1.21.1 in /usr/local/lib/python3.10/dist-packages (from requests&lt;3,&gt;=2-&gt;langchain_community) (2.0.7)
-Requirement already satisfied: certifi&gt;=2017.4.17 in /usr/local/lib/python3.10/dist-packages (from requests&lt;3,&gt;=2-&gt;langchain_community) (2024.8.30)
-Requirement already satisfied: greenlet!=0.4.17 in /usr/local/lib/python3.10/dist-packages (from SQLAlchemy&lt;3,&gt;=1.4-&gt;langchain_community) (3.0.3)
-Requirement already satisfied: anyio in /usr/local/lib/python3.10/dist-packages (from httpx&lt;1,&gt;=0.23.0-&gt;langsmith&lt;0.2.0,&gt;=0.1.0-&gt;langchain_community) (3.7.1)
-Requirement already satisfied: httpcore==1.* in /usr/local/lib/python3.10/dist-packages (from httpx&lt;1,&gt;=0.23.0-&gt;langsmith&lt;0.2.0,&gt;=0.1.0-&gt;langchain_community) (1.0.5)
-Requirement already satisfied: sniffio in /usr/local/lib/python3.10/dist-packages (from httpx&lt;1,&gt;=0.23.0-&gt;langsmith&lt;0.2.0,&gt;=0.1.0-&gt;langchain_community) (1.3.1)
-Requirement already satisfied: h11&lt;0.15,&gt;=0.13 in /usr/local/lib/python3.10/dist-packages (from httpcore==1.*-&gt;httpx&lt;1,&gt;=0.23.0-&gt;langsmith&lt;0.2.0,&gt;=0.1.0-&gt;langchain_community) (0.14.0)
-Collecting jsonpointer&gt;=1.9 (from jsonpatch&lt;2.0,&gt;=1.33-&gt;langchain-core&lt;0.3.0,&gt;=0.2.38-&gt;langchain_community)
-  Downloading jsonpointer-3.0.0-py2.py3-none-any.whl.metadata (2.3 kB)
-Requirement already satisfied: annotated-types&gt;=0.4.0 in /usr/local/lib/python3.10/dist-packages (from pydantic&lt;3,&gt;=1-&gt;langchain&lt;0.3.0,&gt;=0.2.16-&gt;langchain_community) (0.7.0)
-Requirement already satisfied: pydantic-core==2.20.1 in /usr/local/lib/python3.10/dist-packages (from pydantic&lt;3,&gt;=1-&gt;langchain&lt;0.3.0,&gt;=0.2.16-&gt;langchain_community) (2.20.1)
-Collecting mypy-extensions&gt;=0.3.0 (from typing-inspect&lt;1,&gt;=0.4.0-&gt;dataclasses-json&lt;0.7,&gt;=0.5.7-&gt;langchain_community)
-  Downloading mypy_extensions-1.0.0-py3-none-any.whl.metadata (1.1 kB)
-Requirement already satisfied: exceptiongroup in /usr/local/lib/python3.10/dist-packages (from anyio-&gt;httpx&lt;1,&gt;=0.23.0-&gt;langsmith&lt;0.2.0,&gt;=0.1.0-&gt;langchain_community) (1.2.2)
-Downloading langchain_community-0.2.16-py3-none-any.whl (2.3 MB)
-   <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">2.3/2.3 MB</span> <span class="ansi-red-fg">17.7 MB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>
-Downloading dataclasses_json-0.6.7-py3-none-any.whl (28 kB)
-Downloading langchain-0.2.16-py3-none-any.whl (1.0 MB)
-   <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">1.0/1.0 MB</span> <span class="ansi-red-fg">22.1 MB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>
-Downloading langchain_core-0.2.39-py3-none-any.whl (396 kB)
-   <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">396.6/396.6 kB</span> <span class="ansi-red-fg">13.5 MB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>
-Downloading langsmith-0.1.117-py3-none-any.whl (290 kB)
-   <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">290.5/290.5 kB</span> <span class="ansi-red-fg">8.0 MB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>
-Downloading tenacity-8.5.0-py3-none-any.whl (28 kB)
-Downloading jsonpatch-1.33-py2.py3-none-any.whl (12 kB)
-Downloading langchain_text_splitters-0.2.4-py3-none-any.whl (25 kB)
-Downloading marshmallow-3.22.0-py3-none-any.whl (49 kB)
-   <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">49.3/49.3 kB</span> <span class="ansi-red-fg">2.4 MB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>
-Downloading orjson-3.10.7-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (141 kB)
-   <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">141.9/141.9 kB</span> <span class="ansi-red-fg">6.8 MB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>
-Downloading typing_inspect-0.9.0-py3-none-any.whl (8.8 kB)
-Downloading jsonpointer-3.0.0-py2.py3-none-any.whl (7.6 kB)
-Downloading mypy_extensions-1.0.0-py3-none-any.whl (4.7 kB)
-Installing collected packages: tenacity, orjson, mypy-extensions, marshmallow, jsonpointer, typing-inspect, jsonpatch, langsmith, dataclasses-json, langchain-core, langchain-text-splitters, langchain, langchain_community
-  Attempting uninstall: tenacity
-    Found existing installation: tenacity 9.0.0
-    Uninstalling tenacity-9.0.0:
-      Successfully uninstalled tenacity-9.0.0
-Successfully installed dataclasses-json-0.6.7 jsonpatch-1.33 jsonpointer-3.0.0 langchain-0.2.16 langchain-core-0.2.39 langchain-text-splitters-0.2.4 langchain_community-0.2.16 langsmith-0.1.117 marshmallow-3.22.0 mypy-extensions-1.0.0 orjson-3.10.7 tenacity-8.5.0 typing-inspect-0.9.0
-Requirement already satisfied: langchain in /usr/local/lib/python3.10/dist-packages (0.2.16)
-Requirement already satisfied: PyYAML&gt;=5.3 in /usr/local/lib/python3.10/dist-packages (from langchain) (6.0.2)
-Requirement already satisfied: SQLAlchemy&lt;3,&gt;=1.4 in /usr/local/lib/python3.10/dist-packages (from langchain) (2.0.32)
-Requirement already satisfied: aiohttp&lt;4.0.0,&gt;=3.8.3 in /usr/local/lib/python3.10/dist-packages (from langchain) (3.10.5)
-Requirement already satisfied: async-timeout&lt;5.0.0,&gt;=4.0.0 in /usr/local/lib/python3.10/dist-packages (from langchain) (4.0.3)
-Requirement already satisfied: langchain-core&lt;0.3.0,&gt;=0.2.38 in /usr/local/lib/python3.10/dist-packages (from langchain) (0.2.39)
-Requirement already satisfied: langchain-text-splitters&lt;0.3.0,&gt;=0.2.0 in /usr/local/lib/python3.10/dist-packages (from langchain) (0.2.4)
-Requirement already satisfied: langsmith&lt;0.2.0,&gt;=0.1.17 in /usr/local/lib/python3.10/dist-packages (from langchain) (0.1.117)
-Requirement already satisfied: numpy&lt;2,&gt;=1 in /usr/local/lib/python3.10/dist-packages (from langchain) (1.26.4)
-Requirement already satisfied: pydantic&lt;3,&gt;=1 in /usr/local/lib/python3.10/dist-packages (from langchain) (2.8.2)
-Requirement already satisfied: requests&lt;3,&gt;=2 in /usr/local/lib/python3.10/dist-packages (from langchain) (2.32.3)
-Requirement already satisfied: tenacity!=8.4.0,&lt;9.0.0,&gt;=8.1.0 in /usr/local/lib/python3.10/dist-packages (from langchain) (8.5.0)
-Requirement already satisfied: aiohappyeyeballs&gt;=2.3.0 in /usr/local/lib/python3.10/dist-packages (from aiohttp&lt;4.0.0,&gt;=3.8.3-&gt;langchain) (2.4.0)
-Requirement already satisfied: aiosignal&gt;=1.1.2 in /usr/local/lib/python3.10/dist-packages (from aiohttp&lt;4.0.0,&gt;=3.8.3-&gt;langchain) (1.3.1)
-Requirement already satisfied: attrs&gt;=17.3.0 in /usr/local/lib/python3.10/dist-packages (from aiohttp&lt;4.0.0,&gt;=3.8.3-&gt;langchain) (24.2.0)
-Requirement already satisfied: frozenlist&gt;=1.1.1 in /usr/local/lib/python3.10/dist-packages (from aiohttp&lt;4.0.0,&gt;=3.8.3-&gt;langchain) (1.4.1)
-Requirement already satisfied: multidict&lt;7.0,&gt;=4.5 in /usr/local/lib/python3.10/dist-packages (from aiohttp&lt;4.0.0,&gt;=3.8.3-&gt;langchain) (6.0.5)
-Requirement already satisfied: yarl&lt;2.0,&gt;=1.0 in /usr/local/lib/python3.10/dist-packages (from aiohttp&lt;4.0.0,&gt;=3.8.3-&gt;langchain) (1.9.4)
-Requirement already satisfied: jsonpatch&lt;2.0,&gt;=1.33 in /usr/local/lib/python3.10/dist-packages (from langchain-core&lt;0.3.0,&gt;=0.2.38-&gt;langchain) (1.33)
-Requirement already satisfied: packaging&lt;25,&gt;=23.2 in /usr/local/lib/python3.10/dist-packages (from langchain-core&lt;0.3.0,&gt;=0.2.38-&gt;langchain) (24.1)
-Requirement already satisfied: typing-extensions&gt;=4.7 in /usr/local/lib/python3.10/dist-packages (from langchain-core&lt;0.3.0,&gt;=0.2.38-&gt;langchain) (4.12.2)
-Requirement already satisfied: httpx&lt;1,&gt;=0.23.0 in /usr/local/lib/python3.10/dist-packages (from langsmith&lt;0.2.0,&gt;=0.1.17-&gt;langchain) (0.27.2)
-Requirement already satisfied: orjson&lt;4.0.0,&gt;=3.9.14 in /usr/local/lib/python3.10/dist-packages (from langsmith&lt;0.2.0,&gt;=0.1.17-&gt;langchain) (3.10.7)
-Requirement already satisfied: annotated-types&gt;=0.4.0 in /usr/local/lib/python3.10/dist-packages (from pydantic&lt;3,&gt;=1-&gt;langchain) (0.7.0)
-Requirement already satisfied: pydantic-core==2.20.1 in /usr/local/lib/python3.10/dist-packages (from pydantic&lt;3,&gt;=1-&gt;langchain) (2.20.1)
-Requirement already satisfied: charset-normalizer&lt;4,&gt;=2 in /usr/local/lib/python3.10/dist-packages (from requests&lt;3,&gt;=2-&gt;langchain) (3.3.2)
-Requirement already satisfied: idna&lt;4,&gt;=2.5 in /usr/local/lib/python3.10/dist-packages (from requests&lt;3,&gt;=2-&gt;langchain) (3.8)
-Requirement already satisfied: urllib3&lt;3,&gt;=1.21.1 in /usr/local/lib/python3.10/dist-packages (from requests&lt;3,&gt;=2-&gt;langchain) (2.0.7)
-Requirement already satisfied: certifi&gt;=2017.4.17 in /usr/local/lib/python3.10/dist-packages (from requests&lt;3,&gt;=2-&gt;langchain) (2024.8.30)
-Requirement already satisfied: greenlet!=0.4.17 in /usr/local/lib/python3.10/dist-packages (from SQLAlchemy&lt;3,&gt;=1.4-&gt;langchain) (3.0.3)
-Requirement already satisfied: anyio in /usr/local/lib/python3.10/dist-packages (from httpx&lt;1,&gt;=0.23.0-&gt;langsmith&lt;0.2.0,&gt;=0.1.17-&gt;langchain) (3.7.1)
-Requirement already satisfied: httpcore==1.* in /usr/local/lib/python3.10/dist-packages (from httpx&lt;1,&gt;=0.23.0-&gt;langsmith&lt;0.2.0,&gt;=0.1.17-&gt;langchain) (1.0.5)
-Requirement already satisfied: sniffio in /usr/local/lib/python3.10/dist-packages (from httpx&lt;1,&gt;=0.23.0-&gt;langsmith&lt;0.2.0,&gt;=0.1.17-&gt;langchain) (1.3.1)
-Requirement already satisfied: h11&lt;0.15,&gt;=0.13 in /usr/local/lib/python3.10/dist-packages (from httpcore==1.*-&gt;httpx&lt;1,&gt;=0.23.0-&gt;langsmith&lt;0.2.0,&gt;=0.1.17-&gt;langchain) (0.14.0)
-Requirement already satisfied: jsonpointer&gt;=1.9 in /usr/local/lib/python3.10/dist-packages (from jsonpatch&lt;2.0,&gt;=1.33-&gt;langchain-core&lt;0.3.0,&gt;=0.2.38-&gt;langchain) (3.0.0)
-Requirement already satisfied: exceptiongroup in /usr/local/lib/python3.10/dist-packages (from anyio-&gt;httpx&lt;1,&gt;=0.23.0-&gt;langsmith&lt;0.2.0,&gt;=0.1.17-&gt;langchain) (1.2.2)
+<pre>   <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">409.3/409.3 kB</span> <span class="ansi-red-fg">5.5 MB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>
+   <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">50.4/50.4 kB</span> <span class="ansi-red-fg">1.2 MB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>
+   <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">1.2/1.2 MB</span> <span class="ansi-red-fg">28.6 MB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>
 </pre>
 </div>
 </div>
@@ -7733,11 +7534,37 @@ Requirement already satisfied: exceptiongroup in /usr/local/lib/python3.10/dist-
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="ChatGPT-API">ChatGPT API<a class="anchor-link" href="#ChatGPT-API">¶</a></h3>
+<h3 id="API_Key-%EC%9D%B8%EC%A6%9D">API_Key 인증<a class="anchor-link" href="#API_Key-%EC%9D%B8%EC%A6%9D">¶</a></h3>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">openai</span> <span class="kn">import</span> <span class="n">OpenAI</span>
+
+<span class="k">def</span> <span class="nf">init_api</span><span class="p">():</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"chatgpt.env"</span><span class="p">)</span> <span class="k">as</span> <span class="n">env</span><span class="p">:</span>
+       <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">env</span><span class="p">:</span>
+           <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"="</span><span class="p">)</span>
+           <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+
+<span class="n">init_api</span><span class="p">()</span>
+
+<span class="c1"># client = OpenAI(api_key  = os.environ.get("API_KEY"))</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">"OPENAI_API_KEY"</span><span class="p">]</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"API_KEY"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7745,25 +7572,11 @@ Requirement already satisfied: exceptiongroup in /usr/local/lib/python3.10/dist-
 <div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">openai</span> <span class="kn">import</span> <span class="n">OpenAI</span>
-<span class="kn">import</span> <span class="nn">getpass</span>
-
-<span class="c1"># API 키를 안전하게 입력받음</span>
-<span class="n">API_KEY</span> <span class="o">=</span> <span class="n">getpass</span><span class="o">.</span><span class="n">getpass</span><span class="p">(</span><span class="s2">"OpenAI API 키를 입력하세요: "</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">langchain_core.runnables</span> <span class="kn">import</span> <span class="n">RunnablePassthrough</span>
+<span class="kn">from</span> <span class="nn">langchain_core.prompts</span> <span class="kn">import</span> <span class="n">ChatPromptTemplate</span>
+<span class="kn">from</span> <span class="nn">langchain_core.output_parsers</span> <span class="kn">import</span> <span class="n">StrOutputParser</span>
+<span class="kn">from</span> <span class="nn">langchain_openai</span> <span class="kn">import</span> <span class="n">ChatOpenAI</span>
 </pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>OpenAI API 키를 입력하세요: ··········
-</pre>
 </div>
 </div>
 </div>
@@ -7776,39 +7589,33 @@ Requirement already satisfied: exceptiongroup in /usr/local/lib/python3.10/dist-
 <div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="n">OpenAI</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="n">API_KEY</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 프롬프트 템플릿 생성</span>
+<span class="c1"># 템플릿은 system과 human으로 구성되어 있음.</span>
+<span class="n">prompt_template</span> <span class="o">=</span> <span class="n">ChatPromptTemplate</span><span class="o">.</span><span class="n">from_messages</span><span class="p">([</span>
+    <span class="p">(</span><span class="s2">"system"</span><span class="p">,</span> <span class="s2">"안녕하세요. 친구처럼 대화하고 이모티콘을 사용해 주세요 😊"</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"human"</span><span class="p">,</span> <span class="s2">"</span><span class="si">{input_text}</span><span class="s2">"</span><span class="p">)</span>
+<span class="p">])</span>
 
-<span class="c1"># 대화 기록을 수동으로 관리</span>
-<span class="n">conversation_history</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="c1"># LangChain 체인 생성</span>
+<span class="c1"># RunnablePassthrough()를 쓰지 않으면 human의 변수명은 user_input으로 고정 사용해야 함.</span>
+<span class="c1"># RunnablePassthrough()를 쓸 경우,  human의 사용자 입력 변수의 이름을 "input_text"로 지정 가능.</span>
+<span class="c1"># | prompt_template : 생성한 것을 prompt_template 체인에 연결</span>
+<span class="c1"># | ChatOpenAI()    : OpenAI의 채팅 모델을 체인에 연결</span>
+<span class="c1"># | StrOutputParser()  : AI의 응답을 문자열로 파싱 - 모델의 출력을 사람이 읽을 수 있는 문자열로 변환</span>
+<span class="n">chain</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"input_text"</span><span class="p">:</span> <span class="n">RunnablePassthrough</span><span class="p">()}</span> <span class="o">|</span> <span class="n">prompt_template</span> <span class="o">|</span> <span class="n">ChatOpenAI</span><span class="p">()</span> <span class="o">|</span> <span class="n">StrOutputParser</span><span class="p">()</span>
 
-<span class="k">def</span> <span class="nf">chat</span><span class="p">(</span><span class="n">message</span><span class="p">):</span>
-    <span class="n">conversation_history</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">"role"</span><span class="p">:</span> <span class="s2">"user"</span><span class="p">,</span> <span class="s2">"content"</span><span class="p">:</span> <span class="n">message</span><span class="p">})</span>
 
-    <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">chat</span><span class="o">.</span><span class="n">completions</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
-        <span class="n">model</span><span class="o">=</span><span class="s2">"gpt-3.5-turbo"</span><span class="p">,</span>
-        <span class="n">messages</span><span class="o">=</span><span class="n">conversation_history</span><span class="p">,</span>
-        <span class="n">max_tokens</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
-    <span class="p">)</span>
+<span class="c1"># 대화 루프 시작</span>
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">message</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">"YOU :(quit : 종료)  "</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">message</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">"quit"</span><span class="p">:</span>
+        <span class="k">break</span>
 
-    <span class="n">ai_message</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">choices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">message</span><span class="o">.</span><span class="n">content</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
-    <span class="n">conversation_history</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">"role"</span><span class="p">:</span> <span class="s2">"assistant"</span><span class="p">,</span> <span class="s2">"content"</span><span class="p">:</span> <span class="n">ai_message</span><span class="p">})</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">" AI : "</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">""</span><span class="p">,</span> <span class="n">flush</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-    <span class="k">return</span> <span class="n">ai_message</span>
-
-<span class="c1"># 첫 번째 대화</span>
-<span class="n">msg1</span> <span class="o">=</span> <span class="s2">"안녕하세요!"</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"사용자 : "</span><span class="p">,</span> <span class="n">msg1</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">chat</span><span class="p">(</span><span class="n">msg1</span><span class="p">))</span>
-
-<span class="c1"># 두 번째 대화</span>
-<span class="n">msg2</span> <span class="o">=</span> <span class="s2">"제 이름은 김철수입니다."</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"사용자 : "</span><span class="p">,</span> <span class="n">msg2</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">chat</span><span class="p">(</span><span class="n">msg2</span><span class="p">))</span>
-
-<span class="c1"># 세 번째 대화</span>
-<span class="n">msg3</span> <span class="o">=</span> <span class="s2">"제 이름이 뭐였죠?"</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"사용자 : "</span><span class="p">,</span> <span class="n">msg3</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">chat</span><span class="p">(</span><span class="n">msg3</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">response</span> <span class="ow">in</span> <span class="n">chain</span><span class="o">.</span><span class="n">stream</span><span class="p">(</span><span class="n">message</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">""</span><span class="p">,</span> <span class="n">flush</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -7821,12 +7628,9 @@ Requirement already satisfied: exceptiongroup in /usr/local/lib/python3.10/dist-
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>사용자 :  안녕하세요!
-안녕하세요! 도와드릴 것이 있나요?
-사용자 :  제 이름은 김철수입니다.
-안녕하세요, 김철수님! 만나서 반가워요. 어떻게 도와드릴까요?
-사용자 :  제 이름이 뭐였죠?
-김철수님, 제가 여러분들의 이름을 기억할 수는 없지만 항상 여러분을 도와드릴 준비가 되어있습니다. 어떤 도움이 필요하신가요?
+<pre> AI : 안녕! 어떻게 지내? 😊✨
+ AI : 안녕하세요! 어떻게 지내셨어요? 😊✨
+ AI : 안녕하세요! 저는 대화를 나누고 질문에 답변하며 정보를 제공할 수 있어요. 무엇이든 물어보세요! 💬✨
 </pre>
 </div>
 </div>
@@ -7839,7 +7643,11 @@ Requirement already satisfied: exceptiongroup in /usr/local/lib/python3.10/dist-
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="LangChain-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EC%8B%9C%EC%8A%A4%ED%85%9C-%EC%82%AC%EC%9A%A9">LangChain 메모리 시스템 사용<a class="anchor-link" href="#LangChain-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EC%8B%9C%EC%8A%A4%ED%85%9C-%EC%82%AC%EC%9A%A9">¶</a></h3>
+<h3 id="%EC%8B%A4%EC%8A%B5-%EB%B0%8F-%EB%8F%84%EC%A0%84-%EA%B3%BC%EC%A0%9C">실습 및 도전 과제<a class="anchor-link" href="#%EC%8B%A4%EC%8A%B5-%EB%B0%8F-%EB%8F%84%EC%A0%84-%EA%B3%BC%EC%A0%9C">¶</a></h3><ul>
+<li>[실습 1] Prompt 메시지를 변경해 보자.여행용 챗봇 만들어보기</li>
+<li>[실습 2] Prompt 메시지로 할루시네이션을 없애는 프롬프트를 작성해 보자.</li>
+<li>[도전 1] 이전의 대화를 기능을 추가하는 것을 만들어보자.</li>
+</ul>
 </div>
 </div>
 </div>
@@ -7850,9 +7658,7 @@ Requirement already satisfied: exceptiongroup in /usr/local/lib/python3.10/dist-
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<ul>
-<li>LangChain은 자동으로 대화 맥락을 유지하므로, 세번째 질문에서 이름을 기억할 수 있다.</li>
-</ul>
+<h3 id="Prompt-%EC%97%94%EC%A7%80%EB%8B%88%EC%96%B4%EB%A7%81">Prompt 엔지니어링<a class="anchor-link" href="#Prompt-%EC%97%94%EC%A7%80%EB%8B%88%EC%96%B4%EB%A7%81">¶</a></h3>
 </div>
 </div>
 </div>
@@ -7864,44 +7670,33 @@ Requirement already satisfied: exceptiongroup in /usr/local/lib/python3.10/dist-
 <div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">from</span> <span class="nn">getpass</span> <span class="kn">import</span> <span class="n">getpass</span>
-<span class="kn">from</span> <span class="nn">langchain.memory</span> <span class="kn">import</span> <span class="n">ConversationBufferMemory</span>
-<span class="kn">from</span> <span class="nn">langchain.llms</span> <span class="kn">import</span> <span class="n">OpenAI</span>
-<span class="kn">from</span> <span class="nn">langchain.chains</span> <span class="kn">import</span> <span class="n">ConversationChain</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">langchain_core.runnables</span> <span class="kn">import</span> <span class="n">RunnablePassthrough</span>
+<span class="kn">from</span> <span class="nn">langchain_core.prompts</span> <span class="kn">import</span> <span class="n">ChatPromptTemplate</span>
+<span class="kn">from</span> <span class="nn">langchain_core.output_parsers</span> <span class="kn">import</span> <span class="n">StrOutputParser</span>
+<span class="kn">from</span> <span class="nn">langchain_openai</span> <span class="kn">import</span> <span class="n">ChatOpenAI</span>
 
-<span class="c1"># API 키 설정</span>
-<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">"OPENAI_API_KEY"</span><span class="p">]</span> <span class="o">=</span> <span class="n">getpass</span><span class="p">(</span><span class="s2">"OpenAI API 키를 입력하세요: "</span><span class="p">)</span>
+<span class="c1"># 할루시네이션 방지 시스템 메시지</span>
+<span class="n">prompt_template</span> <span class="o">=</span> <span class="n">ChatPromptTemplate</span><span class="o">.</span><span class="n">from_messages</span><span class="p">([</span>
+    <span class="p">(</span><span class="s2">"system"</span><span class="p">,</span>
+     <span class="s2">"안녕하세요. 대화할 때 정확하고 신뢰할 수 있는 정보만 제공해 주세요. "</span>
+     <span class="s2">"잘 모르는 내용은 추측하지 말고 '모르겠습니다'라고 답변해 주세요. 😊"</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"human"</span><span class="p">,</span> <span class="s2">"</span><span class="si">{input_text}</span><span class="s2">"</span><span class="p">)</span>
+<span class="p">])</span>
 
-<span class="c1"># 메모리 시스템 초기화</span>
-<span class="c1"># 대화 내용을 순차적으로 저장하는 간단한 메모리 시스템</span>
-<span class="c1"># 맥락 유지: ConversationBufferMemory를 통해 대화 맥락을 자동으로 유지</span>
-<span class="n">memory</span> <span class="o">=</span> <span class="n">ConversationBufferMemory</span><span class="p">()</span>
+<span class="c1"># LangChain 체인 생성</span>
+<span class="n">chain</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"input_text"</span><span class="p">:</span> <span class="n">RunnablePassthrough</span><span class="p">()}</span> <span class="o">|</span> <span class="n">prompt_template</span> <span class="o">|</span> <span class="n">ChatOpenAI</span><span class="p">()</span> <span class="o">|</span> <span class="n">StrOutputParser</span><span class="p">()</span>
 
-<span class="c1"># 대화 체인 생성</span>
-<span class="c1"># 언어 모델, 메모리, 프롬프트 템플릿을 결합한 대화 시스템</span>
-<span class="n">conversation</span> <span class="o">=</span> <span class="n">ConversationChain</span><span class="p">(</span>
-    <span class="n">llm</span><span class="o">=</span><span class="n">OpenAI</span><span class="p">(),</span>
-    <span class="n">memory</span><span class="o">=</span><span class="n">memory</span><span class="p">,</span>   <span class="c1"># 위에서 생성한 메모리 시스템을 사용</span>
-    <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span>     <span class="c1"># 상세한 출력을 활성화</span>
-<span class="p">)</span>
+<span class="c1"># 대화 루프 시작</span>
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">message</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">"YOU :(quit : 종료)  "</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">message</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">"quit"</span><span class="p">:</span>
+        <span class="k">break</span>
 
-<span class="c1"># 첫 번째 대화</span>
-<span class="c1"># conversation.predict()를 사용하여 대화를 진행</span>
-<span class="n">msg1</span> <span class="o">=</span> <span class="s2">"안녕하세요!"</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"사용자 : "</span><span class="p">,</span> <span class="n">msg1</span><span class="p">)</span>
-<span class="n">response1</span> <span class="o">=</span> <span class="n">conversation</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="nb">input</span><span class="o">=</span><span class="n">msg1</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">response1</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">" AI : "</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">""</span><span class="p">,</span> <span class="n">flush</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-<span class="c1"># 두 번째 대화 (이전 대화 맥락 유지)</span>
-<span class="n">msg2</span> <span class="o">=</span> <span class="s2">"제 이름은 김철수입니다."</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"사용자 : "</span><span class="p">,</span> <span class="n">msg2</span><span class="p">)</span>
-<span class="n">response2</span> <span class="o">=</span> <span class="n">conversation</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="nb">input</span><span class="o">=</span><span class="n">msg2</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">response2</span><span class="p">)</span>
-
-<span class="c1"># 세 번째 대화 (이름을 기억함)</span>
-<span class="n">response3</span> <span class="o">=</span> <span class="n">conversation</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="nb">input</span><span class="o">=</span><span class="s2">"제 이름이 뭐였죠?"</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">response3</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">response</span> <span class="ow">in</span> <span class="n">chain</span><span class="o">.</span><span class="n">stream</span><span class="p">(</span><span class="n">message</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">""</span><span class="p">,</span> <span class="n">flush</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -7914,29 +7709,25 @@ Requirement already satisfied: exceptiongroup in /usr/local/lib/python3.10/dist-
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>OpenAI API 키를 입력하세요: ··········
+<pre> AI : 안녕하세요! 무엇을 도와드릴까요? 😊
+ AI : 안녕, 나는 챗봇이야. 대화나 정보 제공에 도움을 줄 수 있어. 함께 어떤 이야기를 나눌까? 😊
+ AI : 안녕하세요! 챗봇은 다양한 영역에서 도움을 줄 수 있습니다. 주로 FAQ 답변, 예약 서비스, 제품 정보 제공, 일정 확인, 날씨 정보 제공, 번역, 음악 추천, 간단한 질문에 대한 답변 등 다양한 기능을 수행할 수 있습니다. 하지만 몇몇 복잡하고 전문적인 주제에 대해서는 정확한 정보를 제공하기 어려울 수 있습니다.
+ AI : 별 말씀을요. 궁금한 것이 있으시면 언제든지 물어보세요. 😊
 </pre>
 </div>
 </div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre>&lt;ipython-input-5-2da6eff283f4&gt;:18: LangChainDeprecationWarning: The class `OpenAI` was deprecated in LangChain 0.0.10 and will be removed in 1.0. An updated version of the class exists in the langchain-openai package and should be used instead. To use it run `pip install -U langchain-openai` and import as `from langchain_openai import OpenAI`.
-  llm=OpenAI(),
-&lt;ipython-input-5-2da6eff283f4&gt;:17: LangChainDeprecationWarning: The class `ConversationChain` was deprecated in LangChain 0.2.7 and will be removed in 1.0. Use RunnableWithMessageHistory: https://python.langchain.com/v0.2/api_reference/core/runnables/langchain_core.runnables.history.RunnableWithMessageHistory.html instead.
-  conversation = ConversationChain(
-</pre>
 </div>
 </div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>사용자 :  안녕하세요!
- 안녕하세요! 반가워요. 제 이름은 AI이고, 저는 인공지능 로봇이에요. 혹시 제가 도와드릴 수 있는 게 있나요?
-사용자 :  제 이름은 김철수입니다.
- 반가워요, 김철수님! 제가 알기론 김철수는 대한민국에서 가장 흔한 이름 중 하나예요. 그래서 김철수님이 어느 지역에서 오셨는지 궁금하네요.
- 죄송해요, 제가 김철수님의 이름을 깜빡했나봐요. 제 이름은 AI예요. 김철수님은 어떤 일을 하시나요?
-</pre>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span> 
+</pre></div>
 </div>
 </div>
 </div>
