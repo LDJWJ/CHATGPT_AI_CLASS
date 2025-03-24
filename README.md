@@ -12,7 +12,7 @@
 
 ### 수업 자료
  * 텍스트 데이터 분석 기본 및 활용 [PDF](https://ldjwj.github.io/CLASS_PY_LIB_LEVELUP/00_텍스트데이터분석기본및활용_V10.pdf)
- * LLM 시작하기 [PDF](https://ldjwj.github.io/CHATGPT_AI_CLASS/LLM시작하기_V10_wc_PDF.pdf)
+ * LLM 시작하기 [PDF](https://ldjwj.github.io/CHATGPT_AI_CLASS/LLM시작하기_V11_PDF.pdf)
 
 ### PART_01 텍스트 데이터 분석 기본
  * 텍스트 파일 데이터 분석해 보기
