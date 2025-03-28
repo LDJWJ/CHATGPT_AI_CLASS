@@ -10,6 +10,9 @@
 ### 스케줄 [Link](./AI_Project_Goorm_Schedule_Daniel_01.pdf)
 
 
+### 전망 및 트렌드
+ * AI 시대의 기술 직무와 전망 [PDF](https://ldjwj.github.io/CHATGPT_AI_CLASS/00_AI와기술분야의신흥직업들.pdf)
+
 ### 수업 자료
  * 텍스트 데이터 분석 기본 및 활용 [PDF](https://ldjwj.github.io/CLASS_PY_LIB_LEVELUP/00_텍스트데이터분석기본및활용_V10.pdf)
  * LLM 시작하기 [PDF](https://ldjwj.github.io/CHATGPT_AI_CLASS/LLM시작하기_V11_PDF.pdf)
