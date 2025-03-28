@@ -24,8 +24,9 @@
 
 ### PART_02 LLM 시작하기
  * 전이학습 이해하기 [HTML](https://ldjwj.github.io/CHATGPT_AI_CLASS/03_전이학습_V10.html) [PDF](https://ldjwj.github.io/CHATGPT_AI_CLASS/03_전이학습_V10.pdf)
+ * AI AGENT 이해하기 [HTML]()[PDF](https://ldjwj.github.io/CHATGPT_AI_CLASS/08_AI_에이전트의_기본소개.pdf)
  
- * CHATGPT 
+  * CHATGPT 
    * CHATGPT API 시작하기 [HTML](https://ldjwj.github.io/CHATGPT_AI_CLASS/04_ChatGPTAPI_BASIC_V11.html), [PDF](https://ldjwj.github.io/CHATGPT_AI_CLASS/04_ChatGPTAPI_BASIC_V11.pdf), 
    * CHATGPT GPT-2 실습 및 이해 [HTML](https://ldjwj.github.io/CHATGPT_AI_CLASS/03_GPT2_Pratice_wc_v10.html), [PDF](https://ldjwj.github.io/CHATGPT_AI_CLASS/03_GPT3_Pratice_v10_Colab.pdf) 
    * CHATGPT API 연동하기 [HTML](https://ldjwj.github.io/CHATGPT_AI_CLASS/04_ChatGPTAPI_BASIC_V10.html), [PDF](https://ldjwj.github.io/CHATGPT_AI_CLASS/04_ChatGPTAPI_BASIC_V10.pdf) 
@@ -49,6 +50,9 @@
 
  * 멀티 모달
    * ollama를 활용한 Gemma2, 미스트랄, 멀티모달 활용 [HTML](https://ldjwj.github.io/CHATGPT_AI_CLASS/LangChain/07_ollama_start_V11_2411.html) [PDF](https://ldjwj.github.io/CHATGPT_AI_CLASS/LangChain/07_ollama_start_V11_2411.pdf)
+  
+ * AI AGENT
+   * AI
 
 ### PART_03 실전 앱 구현해 보기
 
