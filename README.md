@@ -13,7 +13,9 @@
 ### 수업 자료
  * 텍스트 데이터 분석 기본 및 활용 [PDF](https://ldjwj.github.io/CLASS_PY_LIB_LEVELUP/00_텍스트데이터분석기본및활용_V10.pdf)
  * LLM 시작하기 [PDF](https://ldjwj.github.io/CHATGPT_AI_CLASS/LLM시작하기_V11_PDF.pdf)
+ * AI AGENT 이해하기 [PDF](https://ldjwj.github.io/CHATGPT_AI_CLASS/08_AI_에이전트의_기본소개.pdf)
 
+ * 
 ### PART_01 텍스트 데이터 분석 기본
  * 텍스트 파일 데이터 분석해 보기
   * 자연어처리 기본 이해 [HTML](https://ldjwj.github.io/CHATGPT_AI_CLASS/01_TextPre_V10.html) [PDF](https://ldjwj.github.io/CHATGPT_AI_CLASS/01_TextPre_V10.pdf)
@@ -24,7 +26,7 @@
 
 ### PART_02 LLM 시작하기
  * 전이학습 이해하기 [HTML](https://ldjwj.github.io/CHATGPT_AI_CLASS/03_전이학습_V10.html) [PDF](https://ldjwj.github.io/CHATGPT_AI_CLASS/03_전이학습_V10.pdf)
- * AI AGENT 이해하기 [HTML]()[PDF](https://ldjwj.github.io/CHATGPT_AI_CLASS/08_AI_에이전트의_기본소개.pdf)
+
  
   * CHATGPT 
    * CHATGPT API 시작하기 [HTML](https://ldjwj.github.io/CHATGPT_AI_CLASS/04_ChatGPTAPI_BASIC_V11.html), [PDF](https://ldjwj.github.io/CHATGPT_AI_CLASS/04_ChatGPTAPI_BASIC_V11.pdf), 
