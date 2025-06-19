@@ -22,10 +22,10 @@
  * 
 ### PART_01 텍스트 데이터 분석 기본
  * 텍스트 파일 데이터 분석해 보기
-  * 자연어처리 기본 이해 [HTML](https://ldjwj.github.io/CHATGPT_AI_CLASS/01_TextPre_V10.html) [PDF](https://ldjwj.github.io/CHATGPT_AI_CLASS/01_TextPre_V10.pdf)
-  * 빈도분석    [HTML](https://ldjwj.github.io/CLASS_PY_LIB_LEVELUP/06_DATA_ANALYSIS/01_텍스트데이터분석1_빈도분석_V10.html)   [PDF](https://ldjwj.github.io/CLASS_PY_LIB_LEVELUP/06_DATA_ANALYSIS/01_텍스트데이터분석1_빈도분석_V10.pdf)
-  * 요약해보기   [HTML](https://ldjwj.github.io/CLASS_PY_LIB_LEVELUP/06_DATA_ANALYSIS/01_텍스트데이터분석2_요약_V10.html)     [PDF](https://ldjwj.github.io/CLASS_PY_LIB_LEVELUP/06_DATA_ANALYSIS/01_텍스트데이터분석2_요약_V10.pdf)
-  * 토픽모델링   [HTML](https://ldjwj.github.io/CLASS_PY_LIB_LEVELUP/06_DATA_ANALYSIS/01_텍스트데이터분석3_토픽모델링_V10.html) [PDF](https://ldjwj.github.io/CLASS_PY_LIB_LEVELUP/06_DATA_ANALYSIS/01_텍스트데이터분석3_토픽모델링_V10.pdf)
+  * 자연어처리 기본 이해 X(에러발생) [HTML](https://ldjwj.github.io/CHATGPT_AI_CLASS/01_TextPre_V10.html) [PDF](https://ldjwj.github.io/CHATGPT_AI_CLASS/01_TextPre_V10.pdf)
+  * 빈도분석    [HTML](https://ldjwj.github.io/CLASS_PY_LIB_LEVELUP/06_DATA_ANALYSIS/텍스트데이터분석1_빈도분석_wc_V112.html)   [PDF](https://ldjwj.github.io/CLASS_PY_LIB_LEVELUP/06_DATA_ANALYSIS/텍스트데이터분석1_빈도분석_wc_V112.pdf)
+  * 요약해보기   [HTML](https://ldjwj.github.io/CLASS_PY_LIB_LEVELUP/06_DATA_ANALYSIS/텍스트데이터분석2_요약_wc_V12.html)     [PDF](https://ldjwj.github.io/CLASS_PY_LIB_LEVELUP/06_DATA_ANALYSIS/텍스트데이터분석2_요약_wc_V12.pdf)
+  * 토픽모델링   [HTML](https://ldjwj.github.io/CLASS_PY_LIB_LEVELUP/06_DATA_ANALYSIS/텍스트데이터분석3_토픽모델링_wc_V12.html) [PDF](https://ldjwj.github.io/CLASS_PY_LIB_LEVELUP/06_DATA_ANALYSIS/텍스트데이터분석3_토픽모델링_wc_V12.pdf)
 
 
 ### PART_02 LLM 시작하기
