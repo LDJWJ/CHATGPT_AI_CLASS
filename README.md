@@ -11,7 +11,8 @@
 
 
 ### 전망 및 트렌드
- * AI 기본 이해 - 트렌드, 활용 사례, 기본실습 등 [PDF](https://ldjwj.github.io/CHATGPT_AI_CLASS/AI트렌드및활용사례_V12_2506_Last.pdf)
+ * AI 기본 이해 - 트렌드, 활용 사례, 기본실습 등 [PDF](https://ldjwj.github.io/CHATGPT_AI_CLASS/AI트렌드및활용사례_V12_2506_Last.pdf) simple Ver1.3 [PDF](https://ldjwj.github.io/CHATGPT_AI_CLASS/AI트렌드및활용사례_V13_바이브코딩.pdf)
+
  * AI 시대의 기술 직무와 전망 [PDF](https://ldjwj.github.io/CHATGPT_AI_CLASS/00_AI와기술분야의신흥직업들.pdf)
 
 ### 수업 자료
