@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 의사결정 프로세스</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 40px;
+            font-size: 14px;
+        }
+        .scenario {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border-left: 5px solid #667eea;
+        }
+        .scenario h3 {
+            margin-top: 0;
+            color: #667eea;
+        }
+        .options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        .option {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 20px;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        .option:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            border-color: #667eea;
+        }
+        .option.selected {
+            border-color: #4CAF50;
+            background: #f1f8f4;
+        }
+        .option h4 {
+            margin: 0 0 10px 0;
+            color: #333;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .criteria {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-top: 15px;
+            font-size: 13px;
+        }
+        .criteria-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .score {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid #e0e0e0;
+        }
+        .star {
+            color: #ffc107;
+        }
+        .decision-box {
+            background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            margin-top: 30px;
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
+        }
+        .decision-box h3 {
+            margin: 0 0 10px 0;
+        }
+        .process-steps {
+            background: #fff3cd;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            border-left: 5px solid #ffc107;
+        }
+        .step {
+            margin: 15px 0;
+            padding: 10px;
+            background: white;
+            border-radius: 5px;
+        }
+        .step-number {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background: #ffc107;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🤔 AI 에이전트의 의사결정</h1>
+        <p class="subtitle">실시간 상황 분석과 최적 선택</p>
+        
+        <div class="scenario">
+            <h3>📌 상황</h3>
+            <p><strong>사용자:</strong> "서울에서 부산까지 내일 가야 해. 가장 좋은 방법 알려줘."</p>
+            <p><strong>제약조건:</strong> 예산 15만원, 오전 9시 도착 필요</p>
+        </div>
+
+        <h3>🔍 선택지 분석</h3>
+        <div class="options">
+            <div class="option" onclick="selectOption(this)">
+                <h4>✈️ 비행기</h4>
+                <p style="color: #666; font-size: 14px;">김포 → 김해공항</p>
+                <div class="criteria">
+                    <div class="criteria-item">⏱️ 시간: <strong>1시간</strong></div>
+                    <div class="criteria-item">💰 비용: <strong>12만원</strong></div>
+                    <div class="criteria-item">🎯 정시성: <strong>90%</strong></div>
+                    <div class="criteria-item">😌 편안함: <strong>높음</strong></div>
+                </div>
+                <div class="score">
+                    <span>종합 점수:</span>
+                    <span class="star">⭐⭐⭐⭐⭐</span>
+                    <strong style="color: #4CAF50;">95점</strong>
+                </div>
+            </div>
+
+            <div class="option" onclick="selectOption(this)">
+                <h4>🚄 KTX</h4>
+                <p style="color: #666; font-size: 14px;">서울역 → 부산역</p>
+                <div class="criteria">
+                    <div class="criteria-item">⏱️ 시간: <strong>2.5시간</strong></div>
+                    <div class="criteria-item">💰 비용: <strong>6만원</strong></div>
+                    <div class="criteria-item">🎯 정시성: <strong>95%</strong></div>
+                    <div class="criteria-item">😌 편안함: <strong>높음</strong></div>
+                </div>
+                <div class="score">
+                    <span>종합 점수:</span>
+                    <span class="star">⭐⭐⭐⭐</span>
+                    <strong style="color: #2196F3;">88점</strong>
+                </div>
+            </div>
+
+            <div class="option" onclick="selectOption(this)">
+                <h4>🚗 자가용</h4>
+                <p style="color: #666; font-size: 14px;">경부고속도로</p>
+                <div class="criteria">
+                    <div class="criteria-item">⏱️ 시간: <strong>4시간</strong></div>
+                    <div class="criteria-item">💰 비용: <strong>8만원</strong></div>
+                    <div class="criteria-item">🎯 정시성: <strong>70%</strong></div>
+                    <div class="criteria-item">😌 편안함: <strong>중간</strong></div>
+                </div>
+                <div class="score">
+                    <span>종합 점수:</span>
+                    <span class="star">⭐⭐⭐</span>
+                    <strong style="color: #ff9800;">72점</strong>
+                </div>
+            </div>
+
+            <div class="option" onclick="selectOption(this)">
+                <h4>🚌 고속버스</h4>
+                <p style="color: #666; font-size: 14px;">센트럴시티 → 부산</p>
+                <div class="criteria">
+                    <div class="criteria-item">⏱️ 시간: <strong>4.5시간</strong></div>
+                    <div class="criteria-item">💰 비용: <strong>3.5만원</strong></div>
+                    <div class="criteria-item">🎯 정시성: <strong>75%</strong></div>
+                    <div class="criteria-item">😌 편안함: <strong>낮음</strong></div>
+                </div>
+                <div class="score">
+                    <span>종합 점수:</span>
+                    <span class="star">⭐⭐</span>
+                    <strong style="color: #f44336;">65점</strong>
+                </div>
+            </div>
+        </div>
+
+        <div class="process-steps">
+            <h3 style="margin-top: 0;">🧠 AI의 사고 과정</h3>
+            <div class="step">
+                <span class="step-number">1</span>
+                <strong>제약조건 확인:</strong> 예산 15만원 이하, 오전 9시 도착 필수
+            </div>
+            <div class="step">
+                <span class="step-number">2</span>
+                <strong>우선순위 설정:</strong> 시간 > 정시성 > 예산 > 편안함
+            </div>
+            <div class="step">
+                <span class="step-number">3</span>
+                <strong>옵션 필터링:</strong> 모든 옵션이 제약조건 충족 확인
+            </div>
+            <div class="step">
+                <span class="step-number">4</span>
+                <strong>점수 계산:</strong> 각 기준별 가중치 적용하여 종합 점수 산출
+            </div>
+            <div class="step">
+                <span class="step-number">5</span>
+                <strong>최종 선택:</strong> 가장 높은 점수의 옵션 선정
+            </div>
+        </div>
+
+        <div class="decision-box">
+            <h3>✅ 최종 결정</h3>
+            <p style="font-size: 18px; margin: 10px 0;">
+                <strong>비행기(김포→김해)</strong>를 추천합니다!
+            </p>
+            <p style="font-size: 14px; margin: 10px 0 0 0; opacity: 0.9;">
+                가장 빠르고(1시간), 정시 도착 가능성이 높으며(90%), 예산 내에서 해결 가능합니다.
+            </p>
+        </div>
+
+        <div style="margin-top: 30px; padding: 20px; background: #f0f7ff; border-radius: 10px; border-left: 5px solid #2196F3;">
+            <h4 style="margin-top: 0; color: #2196F3;">💡 추가 고려사항</h4>
+            <ul style="margin: 10px 0; padding-left: 20px; line-height: 1.8;">
+                <li><strong>공항 접근 시간:</strong> 김포공항까지 1시간 추가 소요 예상</li>
+                <li><strong>체크인 시간:</strong> 출발 1시간 전 도착 권장</li>
+                <li><strong>대안 제시:</strong> 비행기 지연 시 KTX로 즉시 전환 가능</li>
+                <li><strong>예약 지원:</strong> 원하시면 바로 예약을 도와드릴 수 있습니다</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        function selectOption(element) {
+            document.querySelectorAll('.option').forEach(opt => {
+                opt.classList.remove('selected');
+            });
+            element.classList.add('selected');
+        }
+    </script>
+</body>
+</html>

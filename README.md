@@ -19,6 +19,8 @@
  * 텍스트 데이터 분석 기본 및 활용 [PDF](https://ldjwj.github.io/CLASS_PY_LIB_LEVELUP/00_텍스트데이터분석기본및활용_V10.pdf)
  * LLM 시작하기 [PDF](https://ldjwj.github.io/CHATGPT_AI_CLASS/LLM시작하기_V11_PDF.pdf)
  * AI AGENT 이해하기 [PDF](https://ldjwj.github.io/CHATGPT_AI_CLASS/08_AI_에이전트의_기본소개.pdf)
+ * AI AGENT 시각화 [HTML](https://ldjwj.github.io/CHATGPT_AI_CLASS/Visualization/agent_01.html)
+
 
  * 
 ### PART_01 텍스트 데이터 분석 기본
