@@ -39,8 +39,9 @@
    * CHATGPT API 연동하기 [HTML](https://ldjwj.github.io/CHATGPT_AI_CLASS/04_ChatGPTAPI_BASIC_V10.html), [PDF](https://ldjwj.github.io/CHATGPT_AI_CLASS/04_ChatGPTAPI_BASIC_V10.pdf) 
  
  * Hugging Face
-   * Hugging Face을 활용한 감정 분석 실습 [HTML](https://ldjwj.github.io/CHATGPT_AI_CLASS/05_HuggingFace_Basic_V11.html) [PDF](https://ldjwj.github.io/CHATGPT_AI_CLASS/05_HuggingFace_Basic_V11.pdf)
-
+   * Hugging Face을 활용한 기본 실습 [HTML](https://ldjwj.github.io/CHATGPT_AI_CLASS/05_HuggingFace_Basic_V11.html) [PDF](https://ldjwj.github.io/CHATGPT_AI_CLASS/05_HuggingFace_BasicA_V10.pdf)
+   * Hugging Face을 활용한 감정 분석 실습 [HTML] [PDF](https://ldjwj.github.io/CHATGPT_AI_CLASS/05_HuggingFace_BasicB_V13.pdf)
+   * Hugging Face을 활용한 이미지 분류 및 파인튜닝 [HTML]  [PDF](https://ldjwj.github.io/CHATGPT_AI_CLASS/05_HuggingFace_IntmdA_img_FingTunning_WC.pdf)
 
  * LangChain
     * LangChain 기본 예제 [HTML](https://ldjwj.github.io/CHATGPT_AI_CLASS/LangChain/01_LangChain_Start_V10.html) 
