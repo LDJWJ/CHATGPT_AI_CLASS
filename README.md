@@ -1,3 +1,5 @@
+🇰🇷 **한국어** · 🇺🇸 [English](README.en.md) · 🇯🇵 [日本語](README.ja.md)
+
 # 🤖 ChatGPT & 생성형 AI 실전 마스터 (CHATGPT_AI_CLASS)
 
 <p align="center">
@@ -16,8 +18,8 @@
 > ⭐️ 학습에 도움이 되셨다면 우측 상단의 **Star** 버튼을 꾹 눌러주세요!
 
 <p align="center">
-  <a href="#-학습-로드맵">🗺️ 학습 로드맵</a> •
-  <a href="#-ai-트렌드--에이전트-시각화">💡 트렌드 & 시각화</a> •
+  <a href="#️-학습-로드맵">🗺️ 학습 로드맵</a> •
+  <a href="#-ai-트렌드--에이전트-인터랙티브-시각화">💡 트렌드 & 시각화</a> •
   <a href="#-part-01-텍스트-데이터-분석-기초-nlp">📄 Part 1. 텍스트 분석</a> •
   <a href="#-part-02-chatgpt-api--hugging-face-오픈소스-llm">🤗 Part 2. API & Hugging Face</a> •
   <a href="#-part-03-langchain-챗봇--pdf-rag-파이프라인">🦜 Part 3. LangChain & RAG</a> •
