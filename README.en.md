@@ -4,7 +4,7 @@
 
 <p align="center">
   <a href="https://ldjwj.github.io/CHATGPT_AI_CLASS/README.en.html">
-    <img src="https://img.shields.io/badge/🌐_Open_Web_Textbook-GitHub_Pages-2563EB?style=for-the-badge&logo=githubpages&logoColor=white" alt="Web Page"/>
+    <img src="https://img.shields.io/badge/🌐_Web_Textbook-GitHub_Pages-2563EB?style=for-the-badge&logo=githubpages&logoColor=white" alt="Web Page"/>
   </a>
   <img src="https://img.shields.io/badge/OpenAI-ChatGPT_API-412991?style=for-the-badge&logo=openai&logoColor=white" alt="OpenAI"/>
   <img src="https://img.shields.io/badge/LangChain-RAG_%26_Agent-1C3C3C?style=for-the-badge&logo=langchain&logoColor=white" alt="LangChain"/>
@@ -17,7 +17,7 @@
 > This is an **open online course textbook** that walks you step by step through the latest frameworks and practical techniques for building real-world applications in the era of generative AI (GenAI).  
 > ⭐️ If you find it helpful, please give it a **Star** using the button at the top right!
 
-> **Note:** All slides and notebooks (PDF/HTML) are written in Korean. The code runs the same in any language, and your browser's built-in translation (e.g. Chrome) works on the HTML pages.
+> **Note:** All slides and notebooks (PDF/HTML) are in Korean. The code itself is language-independent, and your browser's built-in translation (e.g. Chrome) works on the HTML pages.
 
 <p align="center">
   <a href="#️-learning-roadmap">🗺️ Learning Roadmap</a> •
